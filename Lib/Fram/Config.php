@@ -19,12 +19,10 @@ class Config extends ApplicationComponent
         $this->vars[$element->getAttribute('var')] = $element->getAttribute('value');
       }
     }
-
     if (isset($this->vars[$var]))
     {
       return $this->vars[$var];
     }
-
     return null;
   }
 }
