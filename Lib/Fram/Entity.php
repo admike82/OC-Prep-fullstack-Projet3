@@ -5,8 +5,7 @@ abstract class Entity implements \ArrayAccess
 {
   use Hydrator;
 
-  protected $erreurs = [],
-            $id;
+  protected $erreurs = [];
 
   public function __construct(array $donnees = [])
   {
@@ -16,24 +15,9 @@ abstract class Entity implements \ArrayAccess
     }
   }
 
-  public function isNew()
-  {
-    return empty($this->id);
-  }
-
   public function erreurs()
   {
     return $this->erreurs;
-  }
-
-  public function id()
-  {
-    return $this->id;
-  }
-
-  public function setId($id)
-  {
-    $this->id = (int) $id;
   }
 
   public function offsetGet($var)

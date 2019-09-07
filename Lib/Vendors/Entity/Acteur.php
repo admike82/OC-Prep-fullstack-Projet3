@@ -5,7 +5,8 @@ use \Fram\Entity;
 
 class Acteur extends Entity
 {
-  protected $acteur,
+  protected $idActeur,
+            $acteur,
             $description,
             $logo;
 
@@ -18,7 +19,17 @@ class Acteur extends Entity
     return !(empty($this->acteur) || empty($this->description) || empty($this->logo));
   }
 
+  public function isNew()
+  {
+    return empty($this->idActeur);
+  }
+
   // SETTERS //
+
+  public function setIdActeur(int $idActeur)
+  {
+    $this->idActeur = $idActeur;
+  }
 
   public function setActeur(string $acteur)
   {
@@ -48,6 +59,11 @@ class Acteur extends Entity
   }
 
   // GETTERS //
+
+  public function idActeur() :int
+  {
+    return $this->idActeur;
+  }
 
   public function acteur():string
   {

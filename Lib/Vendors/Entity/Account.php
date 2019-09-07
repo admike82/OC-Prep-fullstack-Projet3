@@ -5,7 +5,8 @@ use \Fram\Entity;
 
 class Account extends Entity
 {
-  protected $nom,
+  protected $idUser,
+            $nom,
             $prenom,
             $username,
             $password,
@@ -24,8 +25,17 @@ class Account extends Entity
     return !(empty($this->nom) || empty($this->prenom) || empty($this->username) || empty($this->password) || empty($this->question) || empty($this->reponse));
   }
 
+  public function isNew()
+  {
+    return empty($this->idUser);
+  }
 
   // SETTERS //
+
+  public function setIdUser(int $idUser)
+  {
+    $this->idUser = $idUser;
+  }
 
   public function setNom(string $nom)
   {
@@ -80,6 +90,11 @@ class Account extends Entity
   }
 
   // GETTERS //
+
+  public function idUser() :int
+  {
+    return $this->idUser;
+  }
 
   public function nom():string
   {
