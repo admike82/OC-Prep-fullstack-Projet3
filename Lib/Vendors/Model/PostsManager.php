@@ -33,7 +33,7 @@ abstract class PostsManager extends Manager
 
   /**
    * Méthode permettant de supprimer un post.
-   * @param $idPost L'identifiant du post à supprimer
+   * @param $idPost int L'identifiant du post à supprimer
    * @return void
    */
   abstract public function delete(int $idPost);

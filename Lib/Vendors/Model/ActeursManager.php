@@ -59,7 +59,7 @@ abstract class ActeursManager extends Manager
    * @param $idActeur int L'identifiant de l'acteur à récupérer
    * @return Acteur L'acteur demandé
    */
-  abstract public function getUnique($idActeur);
+  abstract public function getUnique(int $idActeur);
 
   /**
    * Méthode permettant de modifier un acteur.

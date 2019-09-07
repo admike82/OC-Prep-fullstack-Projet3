@@ -26,38 +26,38 @@ abstract class AccountsManager extends Manager
 
   /**
    * Méthode permettant d'ajouter un compte utilisateur.
-   * @param $account Le compte à ajouter
+   * @param $account Account Le compte à ajouter
    * @return void
    */
   abstract protected function add(Account $account);
 
   /**
    * Méthode permettant de supprimer un compte.
-   * @param $id L'identifiant du compte à supprimer
+   * @param $id int L'identifiant du compte à supprimer
    * @return void
    */
-  abstract public function delete($id);
+  abstract public function delete(int $id);
 
   /**
    * Méthode permettant de modifier un compte.
-   * @param $account Le compte à modifier
+   * @param $account Account Le compte à modifier
    * @return void
    */
   abstract protected function modify(Account $account);
   
   /**
    * Méthode permettant d'obtenir un compte spécifique.
-   * @param $id L'identifiant du compte
+   * @param $id int L'identifiant du compte
    * @return Account
    */
-  abstract public function get($id);
+  abstract public function get(int $id);
 
   /**
    * Méthode permettant d'obtenir un compte spécifique.
-   * @param $username Le nom d'utilisateur du compte
+   * @param $username string Le nom d'utilisateur du compte
    * @return Account
    */
-  abstract public function getByUsername($username);
+  abstract public function getByUsername(string $username);
 
   /**
    * Méthode retournant une liste de compte demandée.
