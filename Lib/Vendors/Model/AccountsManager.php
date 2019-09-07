@@ -20,7 +20,7 @@ abstract class AccountsManager extends Manager
     }
     else
     {
-      throw new \RuntimeException('Le commpte doit être validé pour être enregistré');
+      throw new \RuntimeException('Le compte doit être validé pour être enregistré');
     }
   }
 
