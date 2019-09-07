@@ -120,4 +120,9 @@ class Account extends Entity
   {
     return $this->question;
   }
+
+  public function reponse(): string
+  {
+    return $this->reponse;
+  }
 }
