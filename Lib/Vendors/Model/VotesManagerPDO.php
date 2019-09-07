@@ -40,4 +40,12 @@ class VotesManagerPDO extends VotesManager {
 
         return $q->fetchAll();
     }
+
+    public function countLike(int $idActeur) {
+        return $this->dao->query('SELECT COUNT(*) FROM vote WHERE id_acteur = '.$idActeur.' AND vote = true')->fetchColumn();
+    }
+
+    public function countDislike(int $idActeur){
+        return $this->dao->query('SELECT COUNT(*) FROM vote WHERE id_acteur = ' . $idActeur . ' AND vote = false')->fetchColumn();
+    }
 }

@@ -38,8 +38,22 @@ abstract class VotesManager extends Manager {
 
     /**
      * Méthode permettant de récupérer une liste de vote.
-     * @param $idActeur int L'identifian de l'acteur sur lequel on veut récupérer les votes
+     * @param $idActeur int L'identifiant de l'acteur sur lequel on veut récupérer les votes
      * @return array
      */
     abstract public function getListOf(int $idActeur);
+
+    /**
+     * Méthode renvoyant le nombre de like total.
+     * @param $idActeur int L'identifiant de l'acteur sur lequel on veut récupérer le nbre de like
+     * @return int
+     */
+    abstract public function countLike(int $idActeur);
+
+    /**
+     * Méthode renvoyant le nombre de dislike total.
+     * @param $idActeur int L'identifiant de l'acteur sur lequel on veut récupérer le nbre de dislike
+     * @return int
+     */
+    abstract public function countDislike(int $idActeur);
 }
