@@ -1,0 +1,96 @@
+<?php
+namespace Fram;
+
+abstract class Field
+{
+    use Hydrator;
+
+    protected $errorMessage;
+    protected $label;
+    protected $name;
+    protected $validators = [];
+    protected $value;
+
+    public function __construct(array $options = [])
+    {
+        if (!empty($options)) {
+            $this->hydrate($options);
+        }
+    }
+
+    abstract public function buildWidget();
+
+    public function isValid() :bool
+    {
+        foreach ($this->validators as $validator) {
+            if (!$validator->isValid($this->value)) {
+                $this->errorMessage = $validator->errorMessage();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function label() :string
+    {
+        return $this->label;
+    }
+
+    public function length() :int
+    {
+        return $this->length;
+    }
+
+    public function name() :string
+    {
+        return $this->name;
+    }
+
+    public function validators() :array
+    {
+        return $this->validators;
+    }
+
+    public function value() :string
+    {
+        return $this->value;
+    }
+
+    public function setLabel(string $label)
+    {
+        if (is_string($label)) {
+            $this->label = $label;
+        }
+    }
+
+    public function setLength(int $length)
+    {
+        if ($length > 0) {
+            $this->length = $length;
+        }
+    }
+
+    public function setName(string $name)
+    {
+        if (is_string($name)) {
+            $this->name = $name;
+        }
+    }
+
+    public function setValidators(array $validators)
+    {
+        foreach ($validators as $validator) {
+            if ($validator instanceof Validator && !in_array($validator, $this->validators)) {
+                $this->validators[] = $validator;
+            }
+        }
+    }
+
+    public function setValue(string $value)
+    {
+        if (is_string($value)) {
+            $this->value = $value;
+        }
+    }
+}
