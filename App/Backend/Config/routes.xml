@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+  <route url="/connexion/" module="Connexion" action="index" />
+  <route url="/connexion/forget\.html" module="Connexion" action="forget"/>
+  <route url="/connexion/newPassword\.html" module="Connexion" action="newPassword"/>
+</routes>
