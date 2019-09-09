@@ -46,7 +46,6 @@ class AccountFormBuilder extends FormBuilder {
             'maxLength' => 20,
             'validators' => [
                 new MinLengthValidator('le mot de passe spécifié est trop court (8 caractères minimum)', 8),
-                new MaxLengthValidator('le mot de passe spécifié est trop long (20 caractères maximum)', 20),
                 new NotNullValidator('Merci de renseigner votre prénom'),
             ],
         ]))

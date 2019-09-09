@@ -13,10 +13,10 @@ class SelectField extends Field {
             $widget .= $this->errorMessage . '<br />';
         }
 
-        $widget .= '<label>' . $this->label . '</label><select name="' . $this->name . '">';
+        $widget .= '<label>' . $this->label . '</label><select name="' . $this->name . '"">';
 
         foreach ($this->selectOptions as $selectOption) {
-            $widget .= '<option value ="'. $selectOption.'>'. $selectOption.'</opttion>';
+            $widget .= '<option value ="'. $selectOption.'">'. $selectOption.'</option>';
         }
 
         return $widget .= ' </select>';

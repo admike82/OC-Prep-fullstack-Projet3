@@ -60,22 +60,22 @@ class Acteur extends Entity
 
   // GETTERS //
 
-  public function idActeur() :int
+  public function idActeur()
   {
     return $this->idActeur;
   }
 
-  public function acteur():string
+  public function acteur()
   {
     return $this->acteur;
   }
 
-  public function description():string
+  public function description()
   {
     return $this->description;
   }
 
-  public function logo():string
+  public function logo()
   {
     return $this->logo;
   }

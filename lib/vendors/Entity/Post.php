@@ -58,27 +58,27 @@ class Post extends Entity
 
   // GETTERS //
 
-  public function idPost() :int
+  public function idPost()
   {
     return $this->idPost;
   }
 
-  public function idUser():int
+  public function idUser()
   {
     return $this->idUser;
   }
 
-  public function idActeur():int
+  public function idActeur()
   {
     return $this->idActeur;
   }
 
-  public function dateAdd():DateTime
+  public function dateAdd()
   {
     return $this->dateAdd;
   }
 
-  public function post():string
+  public function post()
   {
     return $this->post;
   }

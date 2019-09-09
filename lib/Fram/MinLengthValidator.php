@@ -12,7 +12,7 @@ class MinLengthValidator extends Validator
         $this->setMinLength($minLength);
     }
 
-    public function isValid(int $value): bool
+    public function isValid($value): bool
     {
         return strlen($value) >= $this->minLength;
     }

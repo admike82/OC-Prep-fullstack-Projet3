@@ -11,7 +11,7 @@ class MaxLengthValidator extends Validator
     $this->setMaxLength($maxLength);
   }
   
-  public function isValid(int $value) :bool {
+  public function isValid($value) :bool {
     return strlen($value) <= $this->maxLength;
   }
   

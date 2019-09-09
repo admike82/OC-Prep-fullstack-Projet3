@@ -28,17 +28,17 @@ class Vote extends Entity
 
   // GETTERS //
 
-  public function idUser():int
+  public function idUser()
   {
     return $this->idUser;
   }
 
-  public function idActeur():int
+  public function idActeur()
   {
     return $this->idActeur;
   }
 
-  public function vote() :bool
+  public function vote()
   {
     return $this->vote;
   }

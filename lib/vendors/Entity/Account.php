@@ -91,37 +91,37 @@ class Account extends Entity
 
   // GETTERS //
 
-  public function idUser() :int
+  public function idUser()
   {
     return $this->idUser;
   }
 
-  public function nom():string
+  public function nom()
   {
     return $this->nom;
   }
 
-  public function prenom():string
+  public function prenom()
   {
     return $this->prenom;
   }
 
-  public function username():string
+  public function username()
   {
     return $this->username;
   }
 
-  public function password():string
+  public function password()
   {
     return $this->password;
   }
 
-  public function question():string
+  public function question()
   {
     return $this->question;
   }
 
-  public function reponse(): string
+  public function reponse()
   {
     return $this->reponse;
   }

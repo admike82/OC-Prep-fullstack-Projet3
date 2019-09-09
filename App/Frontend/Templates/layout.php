@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <?= isset($title) ? $title : 'Mon super site' ?>
+        <?= isset($title) ? $title : 'GBAF' ?>
     </title>
 
     <meta charset="utf-8" />
@@ -12,11 +12,16 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <?php if ($user->isAuthenticated()) { ?>
+            <a href="/connexion/logOut.html">logout</a>
+        <?php } ?>
+        
+    </header>
 
     <div id="content">
         <?php if ($user->hasFlash()) echo '<p style="text-align: center;">', $user->getFlash(), '</p>'; ?>
-        
+
         <?= $content ?>
     </div>
 

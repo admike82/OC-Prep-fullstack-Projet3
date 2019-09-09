@@ -10,4 +10,5 @@
     <input type="submit" value="Connexion" />
 </form>
 
-<a href="forget.html">Mot de passe oublié</a>
+<a href="forget.html">Mot de passe oublié</a> <br>
+<a href="register.html">Creer un compte</a>

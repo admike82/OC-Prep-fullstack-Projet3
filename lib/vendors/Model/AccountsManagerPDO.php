@@ -7,14 +7,14 @@ class AccountsManagerPDO extends AccountsManager{
   
   protected function add(Account $account)
   {
-    $q = $this->dao->prepare('INSERT INTO account SET nom = :nom, prenom = :prenom, username = :usernam, password = :password, question = :question, reponse = :reponse');
+    $q = $this->dao->prepare('INSERT INTO account SET nom = :nom, prenom = :prenom, username = :username, password = :password, question = :question, reponse = :reponse');
     
     $q->bindValue(':nom', $account->nom());
     $q->bindValue(':prenom', $account->prenom());
     $q->bindValue(':username', $account->username());
     $q->bindValue(':password', $account->password());
     $q->bindValue(':question', $account->question());
-    $q->bindValue('reponse', $account->reponse());
+    $q->bindValue(':reponse', $account->reponse());
     
     $q->execute();
     
