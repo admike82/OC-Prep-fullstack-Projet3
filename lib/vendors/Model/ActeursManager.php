@@ -28,7 +28,7 @@ abstract class ActeursManager extends Manager
 
   /**
    * Méthode permettant d'ajouter un acteur.
-   * @param $news Acteur L'acteur à ajouter
+   * @param $acteur Acteur L'acteur à ajouter
    * @return void
    */
   abstract protected function add(Acteur $acteur);
@@ -44,7 +44,7 @@ abstract class ActeursManager extends Manager
    * @param $idActeur int L'identifiant de l'acteur à supprimer
    * @return void
    */
-  abstract public function delete($idActeur);
+  abstract public function delete(int $idActeur);
 
   /**
    * Méthode retournant une liste d'acteur demandée.
@@ -63,7 +63,7 @@ abstract class ActeursManager extends Manager
 
   /**
    * Méthode permettant de modifier un acteur.
-   * @param $news Acteur l'acteur à modifier
+   * @param $Acteur Acteur l'acteur à modifier
    * @return void
    */
   abstract protected function modify(Acteur $acteur);

@@ -13,7 +13,7 @@ class PostFormBuilder extends FormBuilder {
                 'rows' => 7,
                 'cols' => 50,
                 'validators' => [
-                    new NotNullValidator('Merci de spécifier votre commentaire'),
+                    new NotNullValidator('Veuillez saisir un commentaire'),
                 ],
             ]));
     }

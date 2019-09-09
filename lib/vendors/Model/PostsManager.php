@@ -47,7 +47,7 @@ abstract class PostsManager extends Manager
   
   /**
    * Méthode permettant de récupérer une liste de post.
-   * @param $idActeur int L'identifian de l'acteur sur lequel on veut récupérer les post
+   * @param $idActeur int L'identifiant de l'acteur sur lequel on veut récupérer les post
    * @return array
    */
   abstract public function getListOf(int $idActeur);

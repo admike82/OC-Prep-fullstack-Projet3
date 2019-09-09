@@ -50,7 +50,7 @@ class ConnexionController extends BackController
             } else if ($question == $account->question() && $reponse == $account->reponse()) {
                 $this->app->user()->setAuthenticated(false);
                 $this->app->user()->setAttribute('account', $account);
-                $this->app->httpResponse()->redirect('/newPassword.html');
+                $this->app->httpResponse()->redirect('./newPassword.html');
             } else {
                 $this->app->user()->setFlash('La question secrète ou la réponse est incorrect.');
             }
@@ -78,7 +78,7 @@ class ConnexionController extends BackController
                 $account->setPassword($hashed_password);
                 $this->managers->getManagerOf('Accounts')->save($account);
                 $this->app->user()->setFlash('le mot de passe a bien été changé');
-                $this->app->httpResponse()->redirect('.');
+                $this->app->httpResponse()->redirect('/');
             }
         }
     }
@@ -118,13 +118,13 @@ class ConnexionController extends BackController
         if ($formHandler->process()) {
             $this->app->user()->setFlash('Le compte utilisateur est créé');
 
-            $this->app->httpResponse()->redirect('.');
+            $this->app->httpResponse()->redirect('/');
         }
 
         $this->page->addVar('form', $form->createView());
     }
 
-    public function executeLogOut(HTTPRequest $request) {
+    public function executeLogOut() {
         $this->app->user()->logOut();
         $this->app->httpResponse()->redirect('/');
     }

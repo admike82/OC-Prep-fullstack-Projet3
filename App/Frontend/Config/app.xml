@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <definitions>
-  <define var="nombbre_caracteres" value="100" />
+  <define var="nombre_caracteres" value="100" />
 </definitions>

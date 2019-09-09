@@ -28,14 +28,14 @@ class AccountsManagerPDO extends AccountsManager{
 
   protected function modify(Account $account)
   {
-    $q = $this->dao->prepare('UPDATE account SET nom = :nom, prenom = :prenom, username = :usernam, password = :password, question = :question, reponse = :reponse WHERE id_user = :idUser');
+    $q = $this->dao->prepare('UPDATE account SET nom = :nom, prenom = :prenom, username = :username, password = :password, question = :question, reponse = :reponse WHERE id_user = :id');
 
     $q->bindValue(':nom', $account->nom());
     $q->bindValue(':prenom', $account->prenom());
     $q->bindValue(':username', $account->username());
     $q->bindValue(':password', $account->password());
     $q->bindValue(':question', $account->question());
-    $q->bindValue('reponse', $account->reponse());
+    $q->bindValue(':reponse', $account->reponse());
     $q->bindValue(':id', $account->idUser(), \PDO::PARAM_INT);
     
     $q->execute();
@@ -43,7 +43,7 @@ class AccountsManagerPDO extends AccountsManager{
   
   public function get(int $idUser)
   {
-    $q = $this->dao->prepare('SELECT id_user, nom, prenom, username, password, question, reponse FROM account WHERE id_user = :idUser');
+    $q = $this->dao->prepare('SELECT id_user as idUser, nom, prenom, username, password, question, reponse FROM account WHERE id_user = :idUser');
     $q->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $q->execute();
     
@@ -53,7 +53,7 @@ class AccountsManagerPDO extends AccountsManager{
   }
 
   public function getByUsername(string $username){
-    $q = $this->dao->prepare('SELECT id_user, nom, prenom, username, password, question, reponse FROM account WHERE username = :username');
+    $q = $this->dao->prepare('SELECT id_user as idUser, nom, prenom, username, password, question, reponse FROM account WHERE username = :username');
     $q->bindValue(':username', $username);
     $q->execute();
 
@@ -63,7 +63,7 @@ class AccountsManagerPDO extends AccountsManager{
   }
 
   public function getList($debut = -1, $limite = -1){
-    $sql = 'SELECT id_user, nom, prenom, username, password, question, reponse FROM account ORDER BY id_user DESC';
+    $sql = 'SELECT id_user as idUser, nom, prenom, username, password, question, reponse FROM account ORDER BY id_user DESC';
 
     if ($debut != -1 || $limite != -1) {
       $sql .= ' LIMIT ' . (int) $limite . ' OFFSET ' . (int) $debut;

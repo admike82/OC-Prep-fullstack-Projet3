@@ -20,7 +20,7 @@ class VotesManagerPDO extends VotesManager {
     }
 
     public function get(int $idUser, int $idActeur) {
-        $q = $this->dao->prepare('SELECT id_user, id_acteur, vote FROM vote WHERE id_user = :idUser AND id_acteur = :idActeur');
+        $q = $this->dao->prepare('SELECT id_user as idUser, id_acteur as idActeur, vote FROM vote WHERE id_user = :idUser AND id_acteur = :idActeur');
         $q->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
         $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
         $q->execute();
@@ -32,7 +32,7 @@ class VotesManagerPDO extends VotesManager {
 
     public function getListOf(int $idActeur) {
 
-        $q = $this->dao->prepare('SELECT id_user, id_acteur, vote FROM vote WHERE id_acteur = :idActeur');
+        $q = $this->dao->prepare('SELECT id_user as idUser, id_acteur as idActeur, vote FROM vote WHERE id_acteur = :idActeur');
         $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
         $q->execute();
 

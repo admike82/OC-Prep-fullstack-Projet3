@@ -3,7 +3,7 @@ namespace Model;
 
 use \Entity\Post;
 
-class PostsMangerPDO extends PostsManager {
+class PostsManagerPDO extends PostsManager {
 
     protected function add(Post $post){
         $q = $this->dao->prepare('INSERT INTO post SET id_user = :idUser, id_acteur = :idActeur, post = :post, date_add = NOW()');
@@ -26,12 +26,8 @@ class PostsMangerPDO extends PostsManager {
     }
 
     public function getListOf(int $idActeur) {
-        if (!ctype_digit($idActeur)) {
-            throw new \InvalidArgumentException('L\'identifiant de l\'acteur passé doit être un nombre entier valide');
-        }
-
-        $q = $this->dao->prepare('SELECT id_post, id_user, id_acteur, post, date_add FROM post WHERE id_acteur = :idActeur');
-        $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
+        $q = $this->dao->prepare('SELECT id_post as idPost, id_user as idUser, id_acteur as idActeur, post, date_add as dateAdd FROM post WHERE id_acteur = :id');
+        $q->bindValue(':id', $idActeur, \PDO::PARAM_INT);
         $q->execute();
 
         $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Post');
@@ -46,18 +42,18 @@ class PostsMangerPDO extends PostsManager {
     }
 
     protected function modify(Post $post) {
-        $q = $this->dao->prepare('UPDATE post SET id_user = :idUser, post = :post WHERE id_post = :idPost');
+        $q = $this->dao->prepare('UPDATE post SET id_user = :idUser, post = :post WHERE id_post = :id');
 
         $q->bindValue(':idUser', $post->idUser(), \PDO::PARAM_INT);
         $q->bindValue(':post', $post->post());
-        $q->bindValue(':idPost', $post->idPost(), \PDO::PARAM_INT);
+        $q->bindValue(':id', $post->idPost(), \PDO::PARAM_INT);
 
         $q->execute();
     }
 
     public function get(int $idPost){
-        $q = $this->dao->prepare('SELECT id_post, id_user, id_acteur, post, date_add FROM post WHERE id_post = :idPost');
-        $q->bindValue(':idPost', $idPost, \PDO::PARAM_INT);
+        $q = $this->dao->prepare('SELECT id_post as idPost, id_user as idUser, id_acteur as idActeur, post, date_add as dateAdd FROM post WHERE id_post = :id');
+        $q->bindValue(':id', $idPost, \PDO::PARAM_INT);
         $q->execute();
 
         $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Post');

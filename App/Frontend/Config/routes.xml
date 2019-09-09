@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
   <route url="/" module="Acteurs" action="index" />
+  <route url="/acteur-([0-9]+)\.html" module="Acteurs" action="show" vars="id"/>
 </routes>
