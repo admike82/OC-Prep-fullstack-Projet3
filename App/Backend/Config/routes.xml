@@ -4,5 +4,4 @@
   <route url="/connexion/forget\.html" module="Connexion" action="forget"/>
   <route url="/connexion/newPassword\.html" module="Connexion" action="newPassword"/>
   <route url="/connexion/register\.html" module="Connexion" action="register"/>
-  <route url="/connexion/logOut\.html" module="Connexion" action="logOut"/>
 </routes>

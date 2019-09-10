@@ -123,9 +123,4 @@ class ConnexionController extends BackController
 
         $this->page->addVar('form', $form->createView());
     }
-
-    public function executeLogOut() {
-        $this->app->user()->logOut();
-        $this->app->httpResponse()->redirect('/');
-    }
 }

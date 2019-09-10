@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
   <route url="/" module="Acteurs" action="index" />
+  <route url="/logOut\.html" module="Acteurs" action="logOut"/>
   <route url="/acteur-([0-9]+)\.html" module="Acteurs" action="show" vars="id"/>
+  <route url="/acteur-([0-9]+)\-add.html" module="Acteurs" action="addComment" vars="id"/>
+  <route url="/acteur-([0-9]+)\-like.html" module="Acteurs" action="like" vars="id"/>
+  <route url="/acteur-([0-9]+)\-dislike.html" module="Acteurs" action="dislike" vars="id"/>
 </routes>

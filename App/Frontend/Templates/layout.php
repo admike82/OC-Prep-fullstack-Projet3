@@ -13,10 +13,15 @@
 
 <body>
     <header>
+        <a href="/">
+            <img src="/images/gbaf.png" alt="logo de GBAF" width="100px"/>
+        </a>
+       
         <?php if ($user->isAuthenticated()) { ?>
-            <a href="/connexion/logOut.html">logout</a>
+            <p><?= $user->getAttribute('account')['nom'] . ' ' . $user->getAttribute('account')['prenom'] ?></p>
+            <a href="/logOut.html">logout</a>
         <?php } ?>
-        
+
     </header>
 
     <div id="content">
@@ -25,7 +30,9 @@
         <?= $content ?>
     </div>
 
-    <footer></footer>
+    <footer>
+        | <a href="#">Mentions légales</a> | <a href="#"> Contact</a> |
+    </footer>
 </body>
 
 </html>
