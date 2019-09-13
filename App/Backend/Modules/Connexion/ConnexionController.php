@@ -70,6 +70,7 @@ class ConnexionController extends BackController
                     ]);
             }
         }
+        $questions = new Questions;
         $form = '';
         $fields = [];
         $fields[] = new StringField([
@@ -79,7 +80,7 @@ class ConnexionController extends BackController
         $fields[] = new SelectField([
             'label' => 'Question secrète',
             'name' => 'question',
-            'selectOptions' => Questions::questions()
+            'selectOptions' => $questions->questions()
         ]);
         $fields[] = new StringField([
             'label' => 'Réponse',

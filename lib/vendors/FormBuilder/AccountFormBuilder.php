@@ -12,6 +12,7 @@ use Fram\MinLengthValidator;
 
 class AccountFormBuilder extends FormBuilder {
     public function build() {
+        $questions = new Questions;
         $this->form->add(new StringField([
             'label' => 'Nom',
             'name' => 'nom',
@@ -52,7 +53,7 @@ class AccountFormBuilder extends FormBuilder {
         ->add(new SelectField([
             'label' => 'Question secrète',
             'name' => 'question',
-            'selectOptions' => Questions::questions(),
+            'selectOptions' => $questions->questions(),
             'validators' => [
                 new NotNullValidator('Merci de selectionner votre question secrète'),
             ],

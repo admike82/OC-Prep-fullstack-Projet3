@@ -22,11 +22,11 @@
                         <div>
                             <div><?= $nbrLike ?></div> <img src="/images/Like.png" alt="like" width="30px">
                         </div>
-                        <? if ($like) { ?>
+                        <?php if ($like) { ?>
                             <a href="/acteur-<?= $acteur['idActeur'] ?>-dislike.html" class="btn-dislike"> Je n'aime plus !</a>
-                        <? } else { ?>
+                        <?php } else { ?>
                             <a href="/acteur-<?= $acteur['idActeur'] ?>-like.html" class="btn-like">J'aime!</a>
-                        <? } ?>
+                        <?php } ?>
                         <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn">Nouveau Commentaire</a>
                     </div>
                 </div>
