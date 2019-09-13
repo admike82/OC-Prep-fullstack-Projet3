@@ -46,7 +46,7 @@ class AccountFormBuilder extends FormBuilder {
             'maxLength' => 20,
             'validators' => [
                 new MinLengthValidator('le mot de passe spécifié est trop court (8 caractères minimum)', 8),
-                new NotNullValidator('Merci de renseigner votre prénom'),
+                new NotNullValidator('Merci de renseigner votre mot de passe'),
             ],
         ]))
         ->add(new SelectField([

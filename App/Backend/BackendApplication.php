@@ -17,11 +17,9 @@ class BackendApplication extends Application
     {
         if ($this->user->isAuthenticated()) {
             $this->httpResponse->redirect('/');
-        } else {
-            $controller = $this->getController();
         }
 
-        
+        $controller = $this->getController();
 
         $controller->execute();
 

@@ -7,32 +7,43 @@
     </title>
 
     <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="" type="text/css" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
 </head>
 
 <body>
-    <header>
-        <a href="/">
-            <img src="/images/gbaf.png" alt="logo de GBAF" width="100px"/>
-        </a>
-       
-        <?php if ($user->isAuthenticated()) { ?>
-            <p><?= $user->getAttribute('account')['nom'] . ' ' . $user->getAttribute('account')['prenom'] ?></p>
-            <a href="/logOut.html">logout</a>
-        <?php } ?>
+    <div id="main">
+        <header>
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/gbaf.png" alt="logo de GBAF" />
+                </a>
+            </div>
+            <div class="user">
+                <?php if ($user->isAuthenticated()) { ?>
+                    <span>
+                        <?= $user->getAttribute('account')['nom'] . ' ' . $user->getAttribute('account')['prenom'] ?>
+                        <a href="/logOut.html" title="Déconnexion"><img src="/images/logout.png" alt="Déconnexion"></a>
+                    </span>
 
-    </header>
+                <?php } ?>
+            </div>
+        </header>
 
-    <div id="content">
-        <?php if ($user->hasFlash()) echo '<p style="text-align: center;">', $user->getFlash(), '</p>'; ?>
+        <div id="content">
+            <?php if ($user->hasFlash()) {
+                $flash = $user->getFlash();
+                echo '<div id="alert"><strong class="alert-'. $flash['class'].'">', $flash['message'], '</strong></div>';
+             } ?>
 
-        <?= $content ?>
+            <?= $content ?>
+        </div>
+
+        <footer>
+            <a href="#" class="btn-light">Mentions légales</a> <a href="#" class="btn-light"> Contact</a>
+        </footer>
     </div>
-
-    <footer>
-        | <a href="#">Mentions légales</a> | <a href="#"> Contact</a> |
-    </footer>
 </body>
 
 </html>

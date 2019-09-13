@@ -11,7 +11,7 @@ use FormBuilder\PostFormBuilder;
 
 class ActeursController extends BackController {
     
-    public function executeIndex(HTTPRequest $request)
+    public function executeIndex()
     {
         $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
         $this->page->addVar('title', 'Listes des acteurs');
@@ -74,7 +74,10 @@ class ActeursController extends BackController {
         $formHandler = new FormHandler($form, $this->managers->getManagerOf('Posts'), $request);
 
         if ($formHandler->process()) {
-            $this->app->user()->setFlash('Le commentaire a bien été ajouté');
+            $this->app->user()->setFlash([
+                'class' => 'success',
+                'message' => 'Le commentaire a bien été ajouté'
+                ]);
 
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }

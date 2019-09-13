@@ -8,9 +8,9 @@ class StringField extends Field
     public function buildWidget() :string {
         $widget = '';
         if (!empty($this->errorMessage)) {
-            $widget .= $this->errorMessage . '<br />';
+            $widget .= '<div class="form-error">' . $this->errorMessage . '</div>';
         }
-        $widget .= '<label>' . $this->label . '</label><input type="text" name="' . $this->name . '"';
+        $widget .= '<label>' . $this->label . '</label><input type="text" class="form-control" name="' . $this->name . '"';
         if (!empty($this->value)) {
             $widget .= ' value="' . htmlspecialchars($this->value) . '"';
         }

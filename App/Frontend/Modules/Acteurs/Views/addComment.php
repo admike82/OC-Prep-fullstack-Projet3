@@ -1,12 +1,14 @@
-<div class="logoActeur">
+<h2>Ajouter un commentaire</h2>
+<div class="logoShowActeur text-center mb-20">
     <img src="/images/<?= $acteur['logo'] ?>" alt="logo de <?= $acteur['acteur'] ?>" />
 </div>
-<h2>Ajouter un commentaire</h2>
-<form action="" method="post">
-    <p>
-        <?= $form ?>
-
-        <input type="submit" value="enregistrer" />
-        <a href="/acteur-<?= $acteur['idActeur'] ?>.html"><button type="button">Annuler</button></a>
-    </p>
-</form>
+    
+    <form action="" method="post">
+        <div class="form-group-large">
+            <?= $form ?>
+            <div class="form-button">
+                <button type="submit" class="btn">Enregistrer</button>
+                <a href="/acteur-<?= $acteur['idActeur'] ?>.html"><button type="button" class="btn">Annuler</button></a>
+            </div>
+        </div>
+    </form>

@@ -10,10 +10,10 @@ class SelectField extends Field {
         $widget = '';
 
         if (!empty($this->errorMessage)) {
-            $widget .= $this->errorMessage . '<br />';
+            $widget .= '<div class="form-error">'.$this->errorMessage . '</div>';
         }
 
-        $widget .= '<label>' . $this->label . '</label><select name="' . $this->name . '"">';
+        $widget .= '<label>' . $this->label . '</label><select class="form-control" name="' . $this->name . '"">';
 
         foreach ($this->selectOptions as $selectOption) {
             $widget .= '<option value ="'. $selectOption.'">'. $selectOption.'</option>';

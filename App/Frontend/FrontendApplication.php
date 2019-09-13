@@ -13,12 +13,11 @@ class FrontendApplication extends Application {
 
     public function run()
     {
-        if ($this->user->isAuthenticated()) {
-            $controller = $this->getController();
-        } else {
+        if (!$this->user->isAuthenticated()) {
             $this->httpResponse->redirect('/connexion/');
         }
-
+        
+        $controller = $this->getController();
         $controller->execute();
 
         $this->httpResponse->setPage($controller->page());

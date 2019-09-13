@@ -1,0 +1,363 @@
+html, body  {
+    margin: 0;
+    padding: 0;
+    background-color: #2b2d42;
+    font-family: 'Oxygen', sans-serif;
+    min-width: 300px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 20px 0 20px;
+    background-color: #edf2f4;
+    border-bottom: 1px solid #2b2d42;
+    box-shadow: 0px 0px 5px #2b2d42;
+}
+
+#main {
+    background-color: white;
+}
+
+#content{ 
+    margin: 50px 0;
+}
+
+.logo {
+    width: 50px;
+}
+
+.logo a img {
+    max-width: 50px;
+}
+    
+.user {
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: auto;
+    vertical-align: middle;
+}
+
+.user span a img{
+    margin-bottom: -8px;
+    max-height: 30px;
+}
+
+#presentation{
+    padding-bottom: 50px;
+    border-bottom: 1px solid #2b2d42;
+    width: 80%;
+    margin: 0 auto 50px auto;
+}
+
+#illustration {
+    vertical-align: middle;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../images/illustration.jpg) no-repeat;
+    background-position: 60% 65%;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #FF0000;
+    margin: 0 0 50px 0;
+}
+a {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #2b2d42;
+    box-shadow: none;
+}
+
+.btn {
+    border : 1px solid #2b2d42;
+    border-radius: 5px;
+    color: #2b2d42;
+    padding: 10px 10px;
+    display: block;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #2b2d42;
+    color: white;
+}
+
+.btn-light {
+    border : 1px solid #edf2f4;
+    border-radius: 5px;
+    color: #edf2f4;
+    padding: 10px 10px;
+}
+
+.btn-light:hover {
+    background-color: #edf2f4;
+    color: #2b2d42;
+}
+
+h3 {
+    margin-top: 0;
+    color: #2b2d42;
+}
+
+.acteur {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 20px 0;
+    padding: 5px;
+    border: 1px solid #2b2d42;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #2b2d42;
+    background-color: #edf2f4;
+}
+
+.logoActeur{
+    flex-basis: 310px;
+    max-width: 100%;
+    margin: 0 10px 0 0;
+}
+
+.logoActeur img {
+    max-width: 100%;
+}
+
+.contentActeur {
+    width: 100%;
+    position: relative;
+}
+
+.more {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    vertical-align: end;
+}
+
+.listActeur {
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+.showActeur, .comments {
+    width: 80%;
+    margin: 20px auto 20px auto;
+    padding: 5px;
+    border: 1px solid #2b2d42;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #2b2d42;
+    background-color: #edf2f4;
+}
+.showActeur {
+    text-align: center;
+}
+.showActeur h2 {
+    color: #2b2d42;
+}
+.logoShowActeur img{
+    max-width: 100%;
+}
+.logoShowActeur {
+    padding: 0 10px;
+}
+.flex {
+    display: flex;
+}
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.like {
+    display: flex;
+    align-items: center;
+}
+.like div {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 5px;
+    align-content: center;
+}
+.like div div {
+    margin: auto 10px auto 0;
+}
+.like img {
+    margin-right: 10px
+}
+.btn-like {
+    color: #2C97E3;
+    border : 1px solid #2C97E3;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-right: 10px;
+}
+.btn-like:hover {
+    color: white;
+    background-color: #2C97E3;
+}
+.btn-dislike {
+    color: #FF0000;
+    border : 1px solid #FF0000;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-right: 10px;
+}
+.btn-dislike:hover {
+    color: white;
+    background-color: #ff0000;
+}
+.comment {
+    width: 95%;
+    margin: 10px auto;
+    background-color: white;
+    border: 1px solid #2b2d42;
+    border-radius: 5px;
+}
+.comment-flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.comment small {
+    color: gray;
+}
+.comment p {
+    padding: 0;
+    margin: 10px;
+}
+.no-comment {
+    text-align: center;
+}
+.form-group {
+    width: 450px;
+    padding: 25px;
+    border: 1px solid #2b2d42;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #2b2d42;
+    background-color: #edf2f4;
+    margin: 0 auto 30px auto;  
+}
+.form-group-large {
+    width: 70%;
+    padding: 25px;
+    border: 1px solid #2b2d42;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #2b2d42;
+    background-color: #edf2f4;
+    margin: 0 auto 30px auto;  
+}
+.form-group label {
+    display: inline-block;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #2b2d42;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+.form-error {
+    color: red;
+}
+.form-button{
+    display: flex;
+    justify-content: center;
+}
+.form-button .btn-center {
+    margin: 0 auto 0 auto;
+}
+.form-button .btn {
+    margin: 0 10px;
+}
+#alert {
+    text-align: center;
+}
+.alert-success {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-info {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.alert-danger {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.text-center {
+    text-align: center;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+footer {
+    text-align: center;
+    background-color: #2b2d42;
+    border-top: 1px solid #2b2d42;
+    padding: 20px 0 20px 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    #illustration {
+        height: 150px;
+        background-size: 100%;
+    }
+    .logoActeur {
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    .acteur {
+        flex-direction: column;
+    }
+    .more {
+        position: unset;
+    }
+    .form-group{
+        width: unset;
+        max-width: 100%;
+    }
+    .comment-flex-between {
+        display: block;
+        text-align: center;
+    }
+    .like {
+        flex-direction: column;
+        margin-top: 5px;
+    }
+    .like div {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .like img {
+        margin-right: 0px;
+    }
+    .btn-like, .btn-dislike {
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
+}

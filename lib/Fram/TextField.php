@@ -9,9 +9,9 @@ class TextField extends Field
     public function buildWidget() :string {
         $widget = '';
         if (!empty($this->errorMessage)) {
-            $widget .= $this->errorMessage . '<br />';
+            $widget .= '<div class="form-error">' . $this->errorMessage . '</div>';
         }
-        $widget .= '<label>' . $this->label . '</label><textarea name="' . $this->name . '"';
+        $widget .= '<label>' . $this->label . '</label><textarea class="form-control" name="' . $this->name . '"';
         if (!empty($this->cols)) {
             $widget .= ' cols="' . $this->cols . '"';
         }

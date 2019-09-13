@@ -1,8 +1,11 @@
 <h2>Nouveau mot de passe</h2>
 
 <form action="" method="post">
-    <label>Sasissez votre nouveau mot de passe :</label>
-    <input type="password" name="password" /><br /><br />
-
-    <input type="submit" value="Enregistrer" />
+    <div class="form-group">
+        <?= $form ?>
+        <div class="form-button">
+            <button type="submit" class="btn">Enregistrer</button>
+            <a href="/"><button type="button" class="btn">Annuler</button></a>
+        </div>
+    </div>
 </form>
