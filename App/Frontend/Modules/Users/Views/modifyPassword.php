@@ -11,7 +11,7 @@
         <form action="" method="post">
             <label>Mot de passe actuel</label>
             <input type="password" name="oldPassword" class="form-control" /><br />
-            <label>Nouveau mot de passe <br>(8 caractères minimum)</label>
+            <label>Nouveau mot de passe (8 caractères minimum)</label>
             <input type="password" name="newPassword" class="form-control" /><br />
             <label>Confirmation du nauveau mot de passe</label>
             <input type="password" name="confirmPassword" class="form-control" /><br />
