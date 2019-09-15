@@ -22,6 +22,8 @@ class ActeursManagerPDO extends ActeursManager {
     }
 
     public function delete(int $idActeur){
+        $this->dao->exec('DELETE FROM post WHERE id_acteur = ' . $idActeur);
+        $this->dao->exec('DELETE FROM vote WHERE id_acteur = ' . $idActeur);
         $this->dao->exec('DELETE FROM acteur WHERE id_acteur = ' .$idActeur);
     }
 

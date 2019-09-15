@@ -10,6 +10,7 @@ use Fram\SelectField;
 use Fram\StringField;
 use Fram\PasswordField;
 use Fram\BackController;
+use Fram\NotNullValidator;
 use FormBuilder\AccountFormBuilder;
 
 class ConnexionController extends BackController
@@ -59,6 +60,7 @@ class ConnexionController extends BackController
                     'class' => 'danger',
                     'message' => 'Le nom d\'utilisateur est incorrect.'
                     ]);
+                unset($username);
             } else if ($question == $account->question() && $reponse == $account->reponse()) {
                 $this->app->user()->setAuthenticated(false);
                 $this->app->user()->setAttribute('account', $account);
@@ -68,6 +70,8 @@ class ConnexionController extends BackController
                     'class' => 'danger',
                     'message' => 'La question secrète ou la réponse est incorrect.'
                     ]);
+                unset($question);
+                unset($reponse);
             }
         }
         $questions = new Questions;
@@ -75,16 +79,19 @@ class ConnexionController extends BackController
         $fields = [];
         $fields[] = new StringField([
             'label' => 'Nom d\'utilisateur',
-            'name' => 'username'
+            'name' => 'username',
+            'value' => isset($username)?$username:''
         ]);
         $fields[] = new SelectField([
             'label' => 'Question secrète',
             'name' => 'question',
+            'selected' => isset($question) ? $question : '',
             'selectOptions' => $questions->questions()
         ]);
         $fields[] = new StringField([
             'label' => 'Réponse',
-            'name' => 'reponse'
+            'name' => 'reponse',
+            'value' => isset($reponse) ? $reponse : ''
         ]);
         foreach ($fields as $field) {
             $form .= $field->buildWidget() . '<br />';
@@ -107,7 +114,7 @@ class ConnexionController extends BackController
                     'class' => 'danger',
                     'message' => 'le mot de passe spécifié est trop court (8 caractères minimum)'
                     ]);
-            } else if (strlen($password) > 8) {
+            } else if (strlen($password) > 20) {
                 $this->app->user()->setFlash([
                     'class' => 'danger',
                     'message' => 'le mot de passe spécifié est trop long (20 caractères maximum)'
@@ -143,10 +150,7 @@ class ConnexionController extends BackController
         $this->page->addVar('title', 'Inscription');
 
         if ($request->method() == 'POST') {
-            $account = $this->managers->getManagerOf('Accounts')->getByUsername($request->postData('username'));
-
-            if (empty($account)) {
-                $account = new Account([
+            $account = new Account([
                     'nom' => $request->postData('nom'),
                     'prenom' => $request->postData('prenom'),
                     'username' => $request->postData('username'),
@@ -154,7 +158,9 @@ class ConnexionController extends BackController
                     'question' => $request->postData('question'),
                     'reponse' => $request->postData('reponse'),
                 ]);
-            } else {
+            $getAccount = $this->managers->getManagerOf('Accounts')->getByUsername($request->postData('username'));
+
+            if (!empty($getAccount)) {
                 $account->setUsername('');
                 $this->app->user()->setFlash([
                     'class' => 'info',
@@ -169,11 +175,11 @@ class ConnexionController extends BackController
         $formBuilder->build();
 
         $form = $formBuilder->form();
-
-        $formHandler = new FormHandler($form, $this->managers->getManagerOf('Accounts'), $request);
+        
         if ($request->method() == 'POST' && $form->isValid()) {
             $hashed_password = password_hash($request->postData('password'), PASSWORD_DEFAULT);
             $account->setPassword($hashed_password);
+            $formHandler = new FormHandler($form, $this->managers->getManagerOf('Accounts'), $request);
             if ($formHandler->process()) {
                 $this->app->user()->setFlash([
                     'class' => 'success',

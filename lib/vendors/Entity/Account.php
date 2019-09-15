@@ -73,7 +73,7 @@ class Account extends Entity
     $this->password = $password;
   }
 
-  public function setQuestion(string $question)
+  public function setQuestion($question)
   {
     if (!is_string($question) || empty($question)) {
       $this->erreurs[] = self::QUESTION_INVALIDE;

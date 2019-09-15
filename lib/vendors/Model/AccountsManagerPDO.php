@@ -23,6 +23,8 @@ class AccountsManagerPDO extends AccountsManager{
 
   public function delete(int $idUser)
   {
+    $this->dao->exec('DELETE FROM post WHERE id_user = ' . $idUser);
+    $this->dao->exec('DELETE FROM vote WHERE id_user = ' . $idUser);
     $this->dao->exec('DELETE FROM account WHERE id_user = '.$idUser);
   }
 

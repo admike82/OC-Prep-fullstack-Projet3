@@ -54,6 +54,7 @@ class AccountFormBuilder extends FormBuilder {
             'label' => 'Question secrète',
             'name' => 'question',
             'selectOptions' => $questions->questions(),
+            'selected' => $this->form->entity()->question(),
             'validators' => [
                 new NotNullValidator('Merci de selectionner votre question secrète'),
             ],

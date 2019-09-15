@@ -14,6 +14,11 @@ class User
     return isset($_SESSION[$attr]) ? $_SESSION[$attr] : null;
   }
 
+  public function delAttribute($attr)
+  {
+    unset($_SESSION[$attr]);
+  }
+
   public function getFlash()
   {
     $flash = $_SESSION['flash'];
