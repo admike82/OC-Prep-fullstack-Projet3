@@ -69,6 +69,7 @@ class UsersController extends BackController {
     }
 
     public function executeModifyPassword(HTTPRequest $request) {
+        $this->page->addVar('title', 'changement de mot de passe');
         $user = $this->app->user()->getAttribute('account');
         if ($request->method() == 'POST') {
             $newPassword = $request->postData('newPassword');
@@ -110,6 +111,7 @@ class UsersController extends BackController {
     }
 
     public function executeDeleteUser(HTTPRequest $request) {
+        $this->page->addVar('title', 'Supprimmer le compte');
         if ($request->method() == 'POST'){
             $user = $this->app->user()->getAttribute('account');
             if ( password_verify($request->postData('password'), $user->password())){

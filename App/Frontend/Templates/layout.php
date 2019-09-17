@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        GBAF-<?= isset($title) ? $title : 'GBAF' ?>
+        GBAF-<?= isset($title) ? $title : '' ?>
     </title>
 
     <meta charset="utf-8" />
