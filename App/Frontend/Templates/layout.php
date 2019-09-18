@@ -43,7 +43,7 @@
         </div>
 
         <footer>
-            <a href="/info/" class="btn-light">Mentions légales</a> <a href="#" class="btn-light"> Contact</a>
+            <a href="/info/" class="btn-light">Mentions légales</a> <a href="/info/contact.html" class="btn-light"> Contact</a>
         </footer>
     </div>
 </body>

@@ -18,6 +18,7 @@ class AccountFormBuilder extends FormBuilder {
             'name' => 'nom',
             'maxLength' => 20,
             'validators' => [
+                new NameValidator('Le nom n\'est pas valide'),
                 new MaxLengthValidator('le nom spécifié est trop long (20 caractères maximum)', 20),
                 new NotNullValidator('Merci de renseigner votre nom'),
             ],
@@ -27,6 +28,7 @@ class AccountFormBuilder extends FormBuilder {
             'name' => 'prenom',
             'maxLength' => 20,
             'validators' => [
+                new NameValidator('Le prénom n\'est pas valide'),
                 new MaxLengthValidator('le prénom spécifié est trop long (20 caractères maximum)', 20),
                 new NotNullValidator('Merci de renseigner votre prénom'),
             ],
