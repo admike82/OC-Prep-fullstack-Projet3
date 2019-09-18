@@ -1,6 +1,8 @@
 RewriteEngine On
 
-RewriteRule ^connexion/ bootstrap.php?app=Backend [QSA,L]
+RewriteRule ^connexion/ bootstrap.php?app=Log [QSA,L]
+
+RewriteRule ^info/ bootstrap.php?app=Info [QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 

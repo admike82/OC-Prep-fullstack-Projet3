@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Backend;
+namespace App\Log;
 
 use \Fram\Application;
 
-class BackendApplication extends Application
+class LogApplication extends Application
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->name = 'Backend';
+        $this->name = 'Log';
     }
 
     public function run()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Backend\Modules\Connexion;
+namespace App\Log\Modules\Connexion;
 
 use Entity\Account;
 use Fram\Questions;
@@ -10,7 +10,6 @@ use Fram\SelectField;
 use Fram\StringField;
 use Fram\PasswordField;
 use Fram\BackController;
-use Fram\NotNullValidator;
 use FormBuilder\AccountFormBuilder;
 
 class ConnexionController extends BackController
