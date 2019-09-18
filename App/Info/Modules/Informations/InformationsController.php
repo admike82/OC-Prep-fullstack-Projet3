@@ -88,7 +88,7 @@ class InformationsController extends BackController
             if ($valid) {
                 $to      = $this->app->config()->get('mail');
                 $subject = 'Messsage envoyé de GBAF';
-                $message = 'Message de : ' . $prenom . ' ' . $nom . '. \r\n' . 'message : ' .$message;
+                $message = "Message de : " . $prenom . " " . $nom . ". \n\n" . "message : \n" . $message;
                 $headers = array(
                     'From' => $mail,
                     'Reply-To' => $mail,
@@ -100,6 +100,7 @@ class InformationsController extends BackController
                         'class' => 'success',
                         'message' => 'Le message a bien été envoyé'
                     ]);
+                    $this->app->httpResponse()->redirect('/');
                 } else {
                     $this->app->user()->setFlash([
                         'class' => 'danger',

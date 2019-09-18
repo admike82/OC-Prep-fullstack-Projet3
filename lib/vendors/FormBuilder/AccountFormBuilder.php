@@ -5,6 +5,7 @@ use Fram\Questions;
 use Fram\FormBuilder;
 use Fram\SelectField;
 use Fram\StringField;
+use Fram\NameValidator;
 use Fram\PasswordField;
 use Fram\NotNullValidator;
 use Fram\MaxLengthValidator;

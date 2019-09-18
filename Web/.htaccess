@@ -1,5 +1,7 @@
 RewriteEngine On
 
+RewriteBase /
+
 RewriteRule ^connexion/ bootstrap.php?app=Log [QSA,L]
 
 RewriteRule ^info/ bootstrap.php?app=Info [QSA,L]

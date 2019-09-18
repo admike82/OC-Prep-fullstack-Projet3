@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- paramètrage de la base de donée -->
+<definitions>
+  <define var="dbhost" value="localhost" /> <!-- serveur -->
+  <define var="dbname" value="gbaf" /> <!-- Nom de la base donnée -->
+  <define var="dbuser" value="root" /> <!-- Nom d'utilisteaur -->
+  <define var="dbmdp" value="" /> <!-- Mot de passe -->
+</definitions>
