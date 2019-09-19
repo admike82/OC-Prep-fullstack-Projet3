@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <definitions>
-  <define var="mail" value="admin@admike.fr" />
+  <define var="mail" value="exemple@exemple.com" /> <!-- renseigner l'addresse e-mail de contact -->
 </definitions>
