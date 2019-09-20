@@ -1,3 +1,5 @@
+/* commun */
+
 html, body  {
     margin: 0;
     padding: 0;
@@ -16,12 +18,51 @@ header {
     box-shadow: 0px 0px 5px #2b2d42;
 }
 
-#main {
-    background-color: white;
+footer {
+    text-align: center;
+    background-color: #2b2d42;
+    border-top: 1px solid #2b2d42;
+    padding: 20px 0 20px 0;
+    margin: 0;
 }
 
-#content{ 
-    margin: 50px 0;
+h1, h2 {
+    text-align: center;
+    color: #FF0000;
+    margin: 0 0 50px 0;
+}
+
+h3 {
+    margin-top: 0;
+    color: #2b2d42;
+}
+
+a {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #2b2d42;
+    box-shadow: none;
+}
+
+.flex {
+    display: flex;
+}
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }
 
 .logo {
@@ -31,17 +72,17 @@ header {
 .logo a img {
     max-width: 50px;
 }
-    
-.user {
-    text-align: right;
-    margin-top: auto;
-    margin-bottom: auto;
-    vertical-align: middle;
+
+.info {
+    text-align: center;
 }
 
-.user span a img{
-    margin-bottom: -8px;
-    max-height: 30px;
+#main {
+    background-color: white;
+}
+
+#content{ 
+    margin: 50px 0;
 }
 
 #presentation{
@@ -61,32 +102,53 @@ header {
     background-position: 60% 65%;
 }
 
-h1, h2 {
+/* Alerts */
+
+#alert {
     text-align: center;
-    color: #FF0000;
-    margin: 0 0 50px 0;
-}
-.info {
-    text-align: center;
-}
-a {
-    color: #FF0000;
-    text-decoration: none;
 }
 
-a:hover{
-    color: #2b2d42;
-    box-shadow: none;
+.alert-success {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
+
+.alert-info {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-danger {
+    font-weight: normal;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Boutton */
 
 .btn, .btn-active {
     border : 1px solid #2b2d42;
     border-radius: 5px;
     color: #2b2d42;
     padding: 10px 10px;
-    display: block;
+    display: inline-block;
     text-align: center;
 }
+
 a.btn-active {
     box-shadow: none;
     pointer-events: none;
@@ -98,7 +160,7 @@ a.btn-active {
     background-color: #2b2d42;
     color: white;
     padding: 10px 10px;
-    display: block;
+    display: inline-block;
     text-align: center;
 }
 
@@ -124,10 +186,33 @@ a.btn-active {
     color: #2b2d42;
 }
 
-h3 {
-    margin-top: 0;
-    color: #2b2d42;
+.btn-like {
+    color: #2C97E3;
+    border : 1px solid #2C97E3;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-right: 10px;
 }
+
+.btn-like:hover {
+    color: white;
+    background-color: #2C97E3;
+}
+
+.btn-dislike {
+    color: #FF0000;
+    border : 1px solid #FF0000;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-right: 10px;
+}
+
+.btn-dislike:hover {
+    color: white;
+    background-color: #ff0000;
+}
+
+/* Acteurs */
 
 .acteur {
     display: flex;
@@ -155,17 +240,21 @@ h3 {
     position: relative;
 }
 
+.contentActeur a {
+    padding-top: 5px;
+}
+
 .more {
     position: absolute;
     right: 0;
     bottom: 0;
-    vertical-align: end;
 }
 
 .listActeur {
     width: 80%;
     margin: 0 auto 0 auto;
 }
+
 .showActeur, .comments {
     width: 80%;
     margin: 20px auto 20px auto;
@@ -175,65 +264,45 @@ h3 {
     box-shadow: 0px 0px 5px #2b2d42;
     background-color: #edf2f4;
 }
+
 .showActeur {
     text-align: center;
 }
+
 .showActeur h2 {
     color: #2b2d42;
 }
+
 .logoShowActeur img{
     max-width: 100%;
 }
+
 .logoShowActeur {
     padding: 0 10px;
 }
-.flex {
-    display: flex;
-}
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-}
+
 .like {
     display: flex;
     align-items: center;
 }
+
 .like div {
     display: flex;
     margin-left: 20px;
     margin-right: 5px;
     align-content: center;
 }
+
 .like div div {
     margin: auto 10px auto 0;
 }
+
 .like img {
     margin-right: 10px
 }
-.btn-like {
-    color: #2C97E3;
-    border : 1px solid #2C97E3;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin-right: 10px;
-}
-.btn-like:hover {
-    color: white;
-    background-color: #2C97E3;
-}
-.btn-dislike {
-    color: #FF0000;
-    border : 1px solid #FF0000;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin-right: 10px;
-}
-.btn-dislike:hover {
-    color: white;
-    background-color: #ff0000;
-}
+
+/* Commentaires */
+
 .comment {
     width: 95%;
     margin: 10px auto;
@@ -241,22 +310,29 @@ h3 {
     border: 1px solid #2b2d42;
     border-radius: 5px;
 }
+
 .comment-flex-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
 }
+
 .comment small {
     color: gray;
 }
+
 .comment p {
     padding: 0;
     margin: 10px;
 }
+
 .no-comment {
     text-align: center;
 }
+
+/* Formulaires */
+
 .form-group {
     width: 450px;
     padding: 25px;
@@ -276,9 +352,11 @@ h3 {
     background-color: #edf2f4;
     margin: 0 auto 30px auto;  
 }
+
 .form-group label {
     display: inline-block;
 }
+
 .form-control {
     display: block;
     width: 100%;
@@ -287,18 +365,36 @@ h3 {
     padding: 5px 0;
     border-radius: 4px;
 }
+
 .form-error {
     color: red;
 }
+
 .form-button{
     display: flex;
     justify-content: center;
 }
+
 .form-button .btn-center {
     margin: 0 auto 0 auto;
 }
+
 .form-button .btn {
     margin: 0 10px;
+}
+
+/* Utilisateurs */
+
+.user {
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: auto;
+    vertical-align: middle;
+}
+
+.user span a img{
+    margin-bottom: -8px;
+    max-height: 30px;
 }
 
 .user-page {
@@ -313,100 +409,73 @@ h3 {
 .menu-user {
     margin-right : 20px;
 }
+
 .menu-user .del{
     color:orange;
 }
+
 .menu-user-item {
     box-shadow: 0px 0px 5px #2b2d42;
+    display: block;
     border-radius: 0px;
 }
 
-#alert {
-    text-align: center;
-}
-.alert-success {
-    font-weight: normal;
-    padding: 10px;
-    margin: 0 0 20px 0;
-    display: inline-block;
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-.alert-info {
-    font-weight: normal;
-    padding: 10px;
-    margin: 0 0 20px 0;
-    display: inline-block;
-    color: #0c5460;
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
-}
-.alert-danger {
-    font-weight: normal;
-    padding: 10px;
-    margin: 0 0 20px 0;
-    display: inline-block;
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-.text-center {
-    text-align: center;
-}
-.mb-20 {
-    margin-bottom: 20px;
-}
-footer {
-    text-align: center;
-    background-color: #2b2d42;
-    border-top: 1px solid #2b2d42;
-    padding: 20px 0 20px 0;
-    margin: 0;
-}
+/* Responsive */
 
 @media screen and (max-width: 768px) {
     #illustration {
         height: 150px;
         background-size: 100%;
     }
+
     .logoActeur {
         flex-basis: 100%;
         text-align: center;
         margin: 0;
     }
+
     .acteur {
         flex-direction: column;
     }
+
     .more {
         position: unset;
+        text-align: center;
     }
+
     .form-group{
         width: unset;
         max-width: 100%;
     }
+
     .comment-flex-between {
         display: block;
         text-align: center;
     }
+
     .like {
         flex-direction: column;
         margin-top: 5px;
     }
+
     .like div {
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
     .like img {
         margin-right: 0px;
     }
+
     .btn-like, .btn-dislike {
         margin-bottom: 10px;
         margin-right: 0px;
     }
+
     .user-page  {
         flex-direction: column;
     }
+
     .menu-user {
         margin: 0;
     }
