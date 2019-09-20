@@ -1,11 +1,14 @@
 <h2>Connexion</h2>
 
-<form action="" method="post">
+<form action="#" method="post">
+    <script>
+        document.querySelector("form").setAttribute("action", "")
+    </script>
     <div class="form-group">
         <label>Nom d'utilisateur</label>
-        <input type="text" name="username" class="form-control"/><br />
+        <input type="text" name="username" class="form-control" /><br />
         <label>Mot de passe</label>
-        <input type="password" name="password" class="form-control"/><br />
+        <input type="password" name="password" class="form-control" /><br />
         <div class="form-button">
             <button type="submit" class="btn">Connexion</button>
         </div>

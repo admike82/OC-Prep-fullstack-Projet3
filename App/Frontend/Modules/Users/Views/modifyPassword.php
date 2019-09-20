@@ -8,7 +8,10 @@
     </div>
 
     <div class="form-group">
-        <form action="" method="post">
+        <form action="#" method="post">
+            <script>
+                document.querySelector("form").setAttribute("action", "")
+            </script>
             <label>Mot de passe actuel</label>
             <input type="password" name="oldPassword" class="form-control" /><br />
             <label>Nouveau mot de passe (8 caractères minimum)</label>

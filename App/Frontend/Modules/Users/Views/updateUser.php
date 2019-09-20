@@ -8,7 +8,10 @@
     </div>
 
     <div class="form-group">
-        <form action="" method="post">
+        <form action="#" method="post">
+            <script>
+                document.querySelector("form").setAttribute("action", "")
+            </script>
             <?= $form ?>
             <div class="form-button">
                 <button type="submit" class="btn">Modifier</button>

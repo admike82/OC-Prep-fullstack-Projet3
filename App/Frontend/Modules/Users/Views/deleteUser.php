@@ -8,7 +8,10 @@
     </div>
 
     <div class="form-group">
-        <form action="" method="post">
+        <form action="#" method="post">
+            <script>
+                document.querySelector("form").setAttribute("action", "")
+            </script>
             <label>Veuillez saisir votre mot de passe pour confirmer la suppression du compte</label>
             <input type="password" name="password" class="form-control" /><br />
             <div class="form-button">
