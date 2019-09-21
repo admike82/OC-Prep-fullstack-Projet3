@@ -44,12 +44,6 @@
 
         <footer>
             <a href="/info/" class="btn-light">Mentions légales</a> <a href="/info/contact.html" class="btn-light"> Contact</a>
-            <p>
-                <a href="https://jigsaw.w3.org/css-validator/check/referer" class="vcss">
-                    <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !" />
-                </a>
-            </p>
-            
         </footer>
     </div>
 </body>
