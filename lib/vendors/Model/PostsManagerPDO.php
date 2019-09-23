@@ -60,8 +60,10 @@ class PostsManagerPDO extends PostsManager {
 
         $post = $q->fetch();
 
-        $post->setDateAdd(new \DateTime($post->dateAdd()));
-
+        if (!empty($post)){
+            $post->setDateAdd(new \DateTime($post->dateAdd()));
+        }
+        
         return $post;
     }
 }

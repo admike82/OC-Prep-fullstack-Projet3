@@ -52,7 +52,8 @@ class ActeursController extends BackController {
         $this->page->addVar('listPosts', $listPosts);
     }
 
-    public function executeAddComment(HTTPRequest $request) {
+    public function executeAddComment(HTTPRequest $request) 
+    {
         $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($request->getData('id'));
         $this->page->addVar('title', 'Ajouter un commentaire sur ' . $acteur->acteur());
         // à modifier
@@ -86,7 +87,76 @@ class ActeursController extends BackController {
         $this->page->addVar('form', $form->createView());
     }
 
-    public function executeLike(HTTPRequest $request) {
+    public function executeUpdateComment(HTTPRequest $request)
+    {
+        $post = $this->managers->getManagerOf('Posts')->get($request->getData('id'));
+        if (empty($post)){
+            $this->app->httpResponse()->redirect404();
+        }
+        
+        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($post->idActeur());
+
+        if ($post->idUser() != $this->app->user()->getAttribute('account')['idUser']){
+            $this->app->user()->setFlash([
+                'class' => 'danger',
+                'message' => 'Vous pouvez modifier uniquement vos commentaires !'
+            ]);
+            $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
+        }
+        
+        $this->page->addVar('title', 'Modifier un commentaire sur ' . $acteur->acteur());
+        
+        if ($request->method() == 'POST') {
+            $post->setPost($request->postData('post'));
+        }
+
+        $formBuilder = new PostFormBuilder($post);
+        $formBuilder->build();
+
+        $form = $formBuilder->form();
+
+        $formHandler = new FormHandler($form, $this->managers->getManagerOf('Posts'), $request);
+
+        if ($request->method() == 'POST' && $formHandler->process()) {
+            $this->app->user()->setFlash([
+                'class' => 'success',
+                'message' => 'Le commentaire a bien été modifié'
+            ]);
+
+            $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
+        }
+
+        $this->page->addVar('acteur', $acteur);
+        $this->page->addVar('form', $form->createView());
+    }
+
+    public function executeDeleteComment(HTTPRequest $request) 
+    {
+        $manager = $this->managers->getManagerOf('Posts');
+        $post = $manager->get($request->getData('id'));
+        if (empty($post)) {
+            $this->app->httpResponse()->redirect404();
+        }
+
+        if ($post->idUser() != $this->app->user()->getAttribute('account')['idUser']) {
+            $this->app->user()->setFlash([
+                'class' => 'danger',
+                'message' => 'Vous pouvez supprimer uniquement vos commentaires !'
+            ]);
+            $this->app->httpResponse()->redirect('/acteur-' . $post->idActeur() . '.html');
+        }
+
+        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($post->idActeur());
+        $manager->delete($post->idPost());
+        $this->app->user()->setFlash([
+            'class' => 'success',
+            'message' => 'Le commentaire a bien été supprimé !'
+        ]);
+        $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
+    }
+
+    public function executeLike(HTTPRequest $request) 
+    {
         $manager = $this->managers->getManagerOf('Votes');
         $vote = new Vote([
             'idUser' => $this->app->user()->getAttribute('account')['idUser'],
