@@ -13,6 +13,11 @@ class infoApplication extends Application
         $this->name = 'Info';
     }
 
+    /**
+     * Lancement du composant Info
+     *
+     * @return void
+     */
     public function run()
     {
         $controller = $this->getController();

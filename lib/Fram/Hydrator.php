@@ -3,6 +3,12 @@ namespace Fram;
 
 trait Hydrator
 {
+  /**
+   * Méthode permettant d'alimenter les Entités
+   *
+   * @param array $data
+   * @return void
+   */
   public function hydrate($data)
   {
     foreach ($data as $key => $value)

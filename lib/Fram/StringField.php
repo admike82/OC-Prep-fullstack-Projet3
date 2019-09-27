@@ -5,6 +5,11 @@ class StringField extends Field
 {
     protected $maxLength;
 
+    /**
+     * Construction du champs
+     *
+     * @return string
+     */
     public function buildWidget() :string {
         $widget = '';
         if (!empty($this->errorMessage)) {
@@ -20,6 +25,7 @@ class StringField extends Field
         return $widget .= ' />';
     }
 
+    // SETTER //
     public function setMaxLength(int $maxLength) {
         if ($maxLength > 0) {
             $this->maxLength = $maxLength;

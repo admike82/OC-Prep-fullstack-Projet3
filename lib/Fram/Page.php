@@ -6,6 +6,13 @@ class Page extends ApplicationComponent
   protected $contentFile;
   protected $vars = [];
 
+  /**
+   * Ajout de variable a la page
+   *
+   * @param string $var
+   * @param mixed $value
+   * @return void
+   */
   public function addVar($var, $value)
   {
     if (!is_string($var) || is_numeric($var) || empty($var))
@@ -16,6 +23,8 @@ class Page extends ApplicationComponent
     $this->vars[$var] = $value;
   }
 
+  // GETTER //
+  
   public function getGeneratedPage()
   {
     if (!file_exists($this->contentFile))
@@ -35,6 +44,8 @@ class Page extends ApplicationComponent
       require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
     return ob_get_clean();
   }
+
+  // SETTER //
 
   public function setContentFile($contentFile)
   {

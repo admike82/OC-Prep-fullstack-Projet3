@@ -5,6 +5,11 @@ class PasswordField extends Field {
     protected $maxLength;
     protected $minlength;
 
+    /**
+     * construction du champs
+     *
+     * @return string
+     */
     public function buildWidget() :string {
         $widget = '';
         if (!empty($this->errorMessage)) {
@@ -20,6 +25,8 @@ class PasswordField extends Field {
         return $widget .= ' />';
     }
 
+    // SETTER //
+    
     public function setMinLength(int $minlength)
     {
         if ($minlength > 0) {

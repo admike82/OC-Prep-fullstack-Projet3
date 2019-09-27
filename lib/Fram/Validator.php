@@ -10,7 +10,15 @@ abstract class Validator
         $this->setErrorMessage($errorMessage);
     }
 
+    /**
+     * Contrôle de la validité des champs
+     *
+     * @param [type] $value
+     * @return boolean
+     */
     abstract public function isValid($value) :bool;
+
+    // SETTER //
 
     public function setErrorMessage(string $errorMessage)
     {
@@ -19,6 +27,8 @@ abstract class Validator
         }
     }
 
+    // GETTER //
+    
     public function errorMessage() :string
     {
         return $this->errorMessage;

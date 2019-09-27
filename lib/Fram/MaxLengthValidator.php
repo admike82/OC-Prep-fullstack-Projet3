@@ -11,9 +11,17 @@ class MaxLengthValidator extends Validator
     $this->setMaxLength($maxLength);
   }
   
+  /**
+   * Vérification de la validité du champs
+   *
+   * @param mixed $value
+   * @return boolean
+   */
   public function isValid($value) :bool {
     return strlen($value) <= $this->maxLength;
   }
+  
+  // SETTER //
   
   public function setMaxLength(int $maxLength) {
     if ($maxLength > 0)

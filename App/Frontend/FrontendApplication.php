@@ -4,6 +4,7 @@ namespace App\Frontend;
 use Fram\Application;
 
 class FrontendApplication extends Application {
+
     public function __construct()
     {
         parent::__construct();
@@ -11,6 +12,11 @@ class FrontendApplication extends Application {
         $this->name = 'Frontend';
     }
 
+    /**
+     * Lancement du composent Frontend
+     *
+     * @return void
+     */
     public function run()
     {
         if (!$this->user->isAuthenticated()) {

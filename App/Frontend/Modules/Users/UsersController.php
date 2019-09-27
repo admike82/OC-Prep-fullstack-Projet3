@@ -10,6 +10,12 @@ use FormBuilder\AccountFormBuilder;
 
 class UsersController extends BackController {
 
+    /**
+     * Génération de la page modification de l'utilisateur
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeUpdateUser(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Paramètre utilisateur');
@@ -68,6 +74,12 @@ class UsersController extends BackController {
         $this->page->addVar('form', $form->createView());
     }
 
+    /**
+     * Génération de la page modifier le mot de passe
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeModifyPassword(HTTPRequest $request) {
         $this->page->addVar('title', 'changement de mot de passe');
         $user = $this->app->user()->getAttribute('account');
@@ -110,6 +122,12 @@ class UsersController extends BackController {
         } 
     }
 
+    /**
+     * Génération de la page de suppression du compte
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeDeleteUser(HTTPRequest $request) {
         $this->page->addVar('title', 'Supprimmer le compte');
         if ($request->method() == 'POST'){

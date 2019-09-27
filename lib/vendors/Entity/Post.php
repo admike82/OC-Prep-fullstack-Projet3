@@ -14,11 +14,21 @@ class Post extends Entity
 
   const POST_INVALIDE = 1;
 
+  /**
+   * Vérification de la validité de l'entité
+   *
+   * @return boolean
+   */
   public function isValid()
   {
     return !(empty($this->post));
   }
 
+  /**
+   * Méthode permettant de verifié si il s'agit d'une création
+   *
+   * @return boolean
+   */
   public function isNew()
   {
     return empty($this->idPost);

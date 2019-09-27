@@ -12,6 +12,12 @@ use Fram\MaxLengthValidator;
 use Fram\MinLengthValidator;
 
 class AccountFormBuilder extends FormBuilder {
+
+    /**
+     * Construction du formulaire
+     *
+     * @return void
+     */
     public function build() {
         $questions = new Questions;
         $this->form->add(new StringField([

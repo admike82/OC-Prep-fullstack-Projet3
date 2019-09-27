@@ -13,6 +13,12 @@ class Managers
     $this->dao = $dao;
   }
 
+  /**
+   * instanciation du manager
+   *
+   * @param string $module
+   * @return mixed
+   */
   public function getManagerOf($module)
   {
     if (!is_string($module) || empty($module))

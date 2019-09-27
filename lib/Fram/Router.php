@@ -7,6 +7,12 @@ class Router
 
   const NO_ROUTE = 1;
 
+  /**
+   * Ajout de la route au tableau des routes
+   *
+   * @param Route $route
+   * @return void
+   */
   public function addRoute(Route $route)
   {
     if (!in_array($route, $this->routes))
@@ -15,6 +21,8 @@ class Router
     }
   }
 
+  // GETTER //
+  
   public function getRoute($url)
   {
     foreach ($this->routes as $route)

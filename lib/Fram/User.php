@@ -5,18 +5,51 @@ session_start();
 
 class User
 {
+  /**
+   * Méthode permettant la déconnection
+   *
+   * @return void
+   */
   public function logOut() {
     session_destroy();
   }
 
-  public function getAttribute($attr)
-  {
-    return isset($_SESSION[$attr]) ? $_SESSION[$attr] : null;
-  }
-
+  /**
+   * Suppression d'un attibut
+   *
+   * @param string $attr
+   * @return void
+   */
   public function delAttribute($attr)
   {
     unset($_SESSION[$attr]);
+  }
+
+  /**
+   * Vérification de l'éxistence d'un message flash
+   *
+   * @return boolean
+   */
+  public function hasFlash()
+  {
+    return isset($_SESSION['flash']);
+  }
+
+  /**
+   * Vérification de l'authentification de l'utilisateur
+   *
+   * @return boolean
+   */
+  public function isAuthenticated()
+  {
+    return isset($_SESSION['auth']) && $_SESSION['auth'] === true;
+  }
+
+  // GETTERS //
+
+  public function getAttribute($attr)
+  {
+    return isset($_SESSION[$attr]) ? $_SESSION[$attr] : null;
   }
 
   public function getFlash()
@@ -27,15 +60,7 @@ class User
     return $flash;
   }
 
-  public function hasFlash()
-  {
-    return isset($_SESSION['flash']);
-  }
-
-  public function isAuthenticated()
-  {
-    return isset($_SESSION['auth']) && $_SESSION['auth'] === true;
-  }
+  // SETTERS //
 
   public function setAttribute($attr, $value)
   {

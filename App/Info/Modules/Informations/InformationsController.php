@@ -13,11 +13,22 @@ use Fram\NameValidator;
 
 class InformationsController extends BackController
 {
+    /**
+     * Génération de la page Mentions Légales
+     *
+     * @return void
+     */
     public function executeindex()
     {
         $this->page->addVar('title', 'Mentions légales');
     }
 
+    /**
+     * Génération du formulaire et de la page de contact
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeContact(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Contact');

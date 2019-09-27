@@ -3,6 +3,11 @@ namespace Fram;
 
 class PDOFactory
 {
+  /**
+   * Récupération de l'interface de connection à la BDD
+   *
+   * @return \PDO
+   */
   public static function getMysqlConnexion()
   {
     $xml = new \DOMDocument;

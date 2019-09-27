@@ -11,6 +11,11 @@ use FormBuilder\PostFormBuilder;
 
 class ActeursController extends BackController {
     
+    /**
+     * Generation de la page d'accueil, utilisteur connecté
+     *
+     * @return void
+     */
     public function executeIndex()
     {
         $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
@@ -28,6 +33,12 @@ class ActeursController extends BackController {
         $this->page->addVar('listeActeurs', $listeActeurs);
     }
 
+    /**
+     * génération de la page détail de l'acteur
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeShow(HTTPRequest $request)
     {
         $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($request->getData('id'));
@@ -52,6 +63,12 @@ class ActeursController extends BackController {
         $this->page->addVar('listPosts', $listPosts);
     }
 
+    /**
+     * Génération de la page ajout d'un commentaire
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeAddComment(HTTPRequest $request) 
     {
         $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($request->getData('id'));
@@ -87,6 +104,12 @@ class ActeursController extends BackController {
         $this->page->addVar('form', $form->createView());
     }
 
+    /**
+     * Génération de la page de modification de commentaire
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeUpdateComment(HTTPRequest $request)
     {
         $post = $this->managers->getManagerOf('Posts')->get($request->getData('id'));
@@ -130,6 +153,12 @@ class ActeursController extends BackController {
         $this->page->addVar('form', $form->createView());
     }
 
+    /**
+     * Suppression d'un commentaire
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeDeleteComment(HTTPRequest $request) 
     {
         $manager = $this->managers->getManagerOf('Posts');
@@ -155,6 +184,12 @@ class ActeursController extends BackController {
         $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
     }
 
+    /**
+     * Ajout d'un like
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeLike(HTTPRequest $request) 
     {
         $manager = $this->managers->getManagerOf('Votes');
@@ -167,12 +202,23 @@ class ActeursController extends BackController {
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
     }
 
+    /**
+     * Suppression d'un like
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeDislike(HTTPRequest $request)
     {
         $this->managers->getManagerOf('Votes')->delete($this->app->user()->getAttribute('account')['idUser'], $request->getData('id'));
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
     }
 
+    /**
+     * Déconnectiokn
+     *
+     * @return void
+     */
     public function executeLogOut()
     {
         $this->app->user()->logOut();

@@ -5,6 +5,12 @@ class Config extends ApplicationComponent
 {
   protected $vars = [];
 
+  /**
+   * Récupération des variables de configuration du composant
+   *
+   * @param string $var
+   * @return void
+   */
   public function get($var)
   {
     if (!$this->vars)

@@ -17,11 +17,22 @@ class Route
     $this->setVarsNames($varsNames);
   }
 
+  /**
+   * Vérification de l'éxistence de la variable
+   *
+   * @return boolean
+   */
   public function hasVars()
   {
     return !empty($this->varsNames);
   }
 
+  /**
+   * Vérification de la validité de l'url et récupération des variables dans l'url
+   *
+   * @param string $url
+   * @return mixed
+   */
   public function match($url)
   {
     if (preg_match('`^'.$this->url.'$`', $url, $matches))
@@ -33,6 +44,8 @@ class Route
       return false;
     }
   }
+
+  // SETTERS //
 
   public function setAction($action)
   {
@@ -68,6 +81,8 @@ class Route
     $this->vars = $vars;
   }
 
+  // GETTERS //
+  
   public function action()
   {
     return $this->action;

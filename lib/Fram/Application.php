@@ -19,6 +19,11 @@ abstract class Application
     $this->name = '';
   }
 
+  /**
+   * Méthode permettant d'instancier le controller
+   *
+   * @return void
+   */
   public function getController()
   {
     $router = new Router;
@@ -65,8 +70,15 @@ abstract class Application
     return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action());
   }
 
+  /**
+   * Méthode permettant le lancement du composant de l'app
+   *
+   * @return void
+   */
   abstract public function run();
 
+  // GETTERS //
+  
   public function httpRequest()
   {
     return $this->httpRequest;

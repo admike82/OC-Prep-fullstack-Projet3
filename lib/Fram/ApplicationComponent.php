@@ -10,6 +10,8 @@ abstract class ApplicationComponent
     $this->app = $app;
   }
   
+  // GETTERS //
+  
   public function app()
   {
     return $this->app;

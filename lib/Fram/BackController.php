@@ -21,6 +21,11 @@ abstract class BackController extends ApplicationComponent
     $this->setView($action);
   }
 
+  /**
+   * Lancement de l'action du controlleur
+   *
+   * @return void
+   */
   public function execute()
   {
     $method = 'execute'.ucfirst($this->action);
@@ -33,11 +38,15 @@ abstract class BackController extends ApplicationComponent
     $this->$method($this->app->httpRequest());
   }
 
+  // GETTERS //
+
   public function page()
   {
     return $this->page;
   }
 
+  // SETTERS //
+  
   public function setModule($module)
   {
     if (!is_string($module) || empty($module))

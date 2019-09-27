@@ -20,11 +20,21 @@ class Account extends Entity
   const QUESTION_INVALIDE = 5;
   const REPONSE_INVALIDE = 6;
 
+  /**
+   * Vérification de la validité de l'entité
+   *
+   * @return boolean
+   */
   public function isValid()
   {
     return !(empty($this->nom) || empty($this->prenom) || empty($this->username) || empty($this->password) || empty($this->question) || empty($this->reponse));
   }
 
+  /**
+   * Méthode permettant de verifié si il s'agit d'une création
+   *
+   * @return boolean
+   */
   public function isNew()
   {
     return empty($this->idUser);

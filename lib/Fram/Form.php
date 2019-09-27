@@ -10,6 +10,12 @@ class Form
         $this->setEntity($entity);
     }
 
+    /**
+     * Ajout d'un champs au formulaire
+     *
+     * @param Field $field
+     * @return Form
+     */
     public function add(Field $field) {
         $attr = $field->name(); // On récupère le nom du champ.
         $field->setValue($this->entity->$attr()); // On assigne la valeur correspondante au champ.
@@ -17,6 +23,11 @@ class Form
         return $this;
     }
 
+    /**
+     * Génération du formulaire
+     *
+     * @return string
+     */
     public function createView() :string {
         $view = '';
         // On génère un par un les champs du formulaire.
@@ -26,6 +37,11 @@ class Form
         return $view;
     }
 
+    /**
+     * Vérification de la validité du formulaire
+     *
+     * @return boolean
+     */
     public function isValid() :bool {
         $valid = true;
         // On vérifie que tous les champs sont valides.
@@ -37,10 +53,14 @@ class Form
         return $valid;
     }
 
+    // GETTER //
+
     public function entity() :Entity {
         return $this->entity;
     }
 
+    // SETTER //
+    
     public function setEntity(Entity $entity) {
         $this->entity = $entity;
     }

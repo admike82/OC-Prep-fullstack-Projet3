@@ -15,6 +15,12 @@ use FormBuilder\AccountFormBuilder;
 class ConnexionController extends BackController
 {
 
+    /**
+     * Génération de la page connection
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeIndex(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Connexion');
@@ -43,6 +49,12 @@ class ConnexionController extends BackController
         }
     }
 
+    /**
+     * Génération de la page Mot de passe oublié
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeForget(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Question secrète');
@@ -99,6 +111,12 @@ class ConnexionController extends BackController
         $this->page->addVar('form', $form);
     }
 
+    /**
+     * Génération de la page Nouveau mot de passe
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeNewPassword(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Nouveau mot de passe');
@@ -144,6 +162,12 @@ class ConnexionController extends BackController
         $this->page->addVar('form', $form);
     }
 
+    /**
+     * Génération de la page créer un compte
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
     public function executeRegister(HTTPRequest $request)
     {
         $this->page->addVar('title', 'Inscription');

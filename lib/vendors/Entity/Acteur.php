@@ -14,11 +14,21 @@ class Acteur extends Entity
   const DESCRIPTION_INVALIDE = 2;
   const LOGO_INVALIDE = 3;
 
+  /**
+   * Vérification de la validité de l'entité
+   *
+   * @return boolean
+   */
   public function isValid()
   {
     return !(empty($this->acteur) || empty($this->description) || empty($this->logo));
   }
 
+  /**
+   * Méthode permettant de verifié si il s'agit d'une création
+   *
+   * @return boolean
+   */
   public function isNew()
   {
     return empty($this->idActeur);

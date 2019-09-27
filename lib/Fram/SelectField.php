@@ -6,6 +6,11 @@ class SelectField extends Field {
     protected $selectOptions = [];
     protected $selected;
 
+    /**
+     * Construction du champs
+     *
+     * @return string
+     */
     public function buildWidget()
     {
         $widget = '';
@@ -31,6 +36,8 @@ class SelectField extends Field {
         ';
     }
 
+    // SETTERS //
+    
     public function setSelectOptions (array $selectOptions) {
         if (count($selectOptions) > 0){
             $this->selectOptions = $selectOptions;

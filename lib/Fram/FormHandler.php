@@ -14,6 +14,11 @@ class FormHandler
         $this->setRequest($request);
     }
 
+    /**
+     * Enregistrement des données du formulaire
+     *
+     * @return boolean
+     */
     public function process() :bool {
         if ($this->request->method() == 'POST' && $this->form->isValid()) {
             $this->manager->save($this->form->entity());
@@ -22,6 +27,8 @@ class FormHandler
         return false;
     }
 
+    // SETTER //
+    
     public function setForm(Form $form) {
         $this->form = $form;
     }

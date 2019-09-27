@@ -18,8 +18,18 @@ abstract class Field
         }
     }
 
+    /**
+     * Génération des champs de formulaire
+     *
+     * @return string
+     */
     abstract public function buildWidget();
 
+    /**
+     * Vérification de la vaiidité du champs
+     *
+     * @return boolean
+     */
     public function isValid() :bool
     {
         foreach ($this->validators as $validator) {
@@ -31,6 +41,8 @@ abstract class Field
 
         return true;
     }
+
+    // GETTERS //
 
     public function label() :string
     {
@@ -57,6 +69,8 @@ abstract class Field
         return $this->value;
     }
 
+    // SETTERS //
+    
     public function setLabel(string $label)
     {
         if (is_string($label)) {

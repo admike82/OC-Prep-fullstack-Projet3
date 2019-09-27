@@ -6,6 +6,12 @@ use Fram\TextField;
 use Fram\NotNullValidator;
 
 class PostFormBuilder extends FormBuilder {
+
+    /**
+     * Construction du formulaire
+     *
+     * @return void
+     */
     public function build() {
         $this->form->add(new TextField([
                 'label' => 'Votre commentaire',

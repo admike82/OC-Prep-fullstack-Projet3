@@ -13,6 +13,11 @@ class LogApplication extends Application
         $this->name = 'Log';
     }
 
+    /**
+     * Lancement du composant Log
+     *
+     * @return void
+     */
     public function run()
     {
         if ($this->user->isAuthenticated()) {

@@ -6,6 +6,11 @@ class TextField extends Field
     protected $cols;
     protected $rows;
 
+    /**
+     * Constrcution du champs
+     *
+     * @return string
+     */
     public function buildWidget() :string {
         $widget = '';
         if (!empty($this->errorMessage)) {
@@ -24,6 +29,8 @@ class TextField extends Field
         }
         return $widget . '</textarea>';
     }
+
+    // SETTERS //
 
     public function setCols(int $cols) {
         if ($cols > 0) {

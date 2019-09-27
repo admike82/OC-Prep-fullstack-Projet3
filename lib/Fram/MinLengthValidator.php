@@ -12,11 +12,19 @@ class MinLengthValidator extends Validator
         $this->setMinLength($minLength);
     }
 
+    /**
+     * Vérification de la validité du champs
+     *
+     * @param mixed $value
+     * @return boolean
+     */
     public function isValid($value): bool
     {
         return strlen($value) >= $this->minLength;
     }
 
+    // SETTER //
+    
     public function setMinLength(int $minLength)
     {
         if ($minLength > 0) {

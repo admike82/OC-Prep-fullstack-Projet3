@@ -15,11 +15,18 @@ abstract class Entity implements \ArrayAccess
     }
   }
 
+  // GETTER //
   public function erreurs()
   {
     return $this->erreurs;
   }
 
+  /**
+   * Appel au getter
+   *
+   * @param string $var
+   * @return string
+   */
   public function offsetGet($var)
   {
     if (isset($this->$var) && is_callable([$this, $var]))
@@ -28,6 +35,13 @@ abstract class Entity implements \ArrayAccess
     }
   }
 
+  /**
+   * Appel au setter
+   *
+   * @param string $var
+   * @param $value
+   * @return void
+   */
   public function offsetSet($var, $value)
   {
     $method = 'set'.ucfirst($var);
@@ -38,11 +52,23 @@ abstract class Entity implements \ArrayAccess
     }
   }
 
+  /**
+   * Vérification de l'existence du setter
+   *
+   * @param string $var
+   * @return boolean
+   */
   public function offsetExists($var)
   {
     return isset($this->$var) && is_callable([$this, $var]);
   }
 
+  /**
+   * Appel aux unsetter
+   *
+   * @param string $var
+   * @return void
+   */
   public function offsetUnset($var)
   {
     throw new \Exception('Impossible de supprimer une quelconque valeur');
