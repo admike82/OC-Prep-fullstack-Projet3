@@ -6,13 +6,16 @@ use \Entity\Vote;
 class VotesManagerPDO extends VotesManager {
 
     protected function add(Vote $vote) {
-        $q = $this->dao->prepare('INSERT INTO vote SET id_user = :idUser, id_acteur = :idActeur, vote = :vote');
+        $test = $this->get($vote->idUser(), $vote->idActeur());
+        if (empty($test)){
+            $q = $this->dao->prepare('INSERT INTO vote SET id_user = :idUser, id_acteur = :idActeur, vote = :vote');
 
-        $q->bindValue(':idUser', $vote->idUser(), \PDO::PARAM_INT);
-        $q->bindValue(':idActeur', $vote->idActeur(), \PDO::PARAM_INT);
-        $q->bindValue(':vote', $vote->vote(), \PDO::PARAM_BOOL);
+            $q->bindValue(':idUser', $vote->idUser(), \PDO::PARAM_INT);
+            $q->bindValue(':idActeur', $vote->idActeur(), \PDO::PARAM_INT);
+            $q->bindValue(':vote', $vote->vote(), \PDO::PARAM_BOOL);
 
-        $q->execute();
+            $q->execute();
+        }
     }
 
     public function delete(int $idUser, int $idActeur) {
