@@ -101,13 +101,12 @@ class InformationsController extends BackController
                 $subject = 'Messsage envoyé de GBAF';
                 $message = "Message de : " . $prenom . " " . $nom . ". \n\n" . "message : \n" . $message;
                 $headers = array(
-                    'Content-Type' => 'Content-Type: text/plain; charset="iso-8859-1"',
                     'From' => $mail,
                     'Reply-To' => $mail,
                     'X-Mailer' => 'PHP/' . phpversion()
                 );
 
-                if (mail($to, $subject, $message, $headers)) {
+                if (mail($to, $subject, utf8_decode($message), $headers)) {
                     $this->app->user()->setFlash([
                         'class' => 'success',
                         'message' => 'Le message a bien été envoyé'
