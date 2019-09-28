@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        GBAF-<?= isset($title) ? $title : '' ?>
+        GBAF-<?= isset($title) ? htmlspecialchars($title) : '' ?>
     </title>
 
     <meta charset="utf-8" />
@@ -25,7 +25,7 @@
             <div class="user">
                 <?php if ($user->isAuthenticated()) { ?>
                     <span>
-                        <?= $user->getAttribute('account')['nom'] . ' ' . $user->getAttribute('account')['prenom'] ?>
+                        <?= htmlspecialchars($user->getAttribute('account')['nom']) . ' ' . htmlspecialchars($user->getAttribute('account')['prenom']) ?>
                         <a href="/update-user.html" title="Paramètre du compte"><img src="/images/settings.png" alt="Paramètre"></a>
                         <a href="/logOut.html" title="Déconnexion"><img src="/images/logout.png" alt="Déconnexion"></a>
                     </span>

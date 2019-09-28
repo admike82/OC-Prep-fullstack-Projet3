@@ -1,12 +1,12 @@
 <section id="acteur">
     <div class="showActeur">
         <div class="logoShowActeur">
-            <img src="/images/<?= $acteur['logo'] ?>" alt="logo de <?= $acteur['acteur'] ?>" />
+            <img src="/images/<?= htmlspecialchars($acteur['logo']) ?>" alt="logo de <?= htmlspecialchars($acteur['acteur']) ?>" />
         </div>
         <div class="contentActeur">
-            <h2><?= $acteur['acteur'] ?></h2>
+            <h2><?= htmlspecialchars($acteur['acteur']) ?></h2>
             <a href="#">www.<?= str_replace(' ', '-', strtolower($acteur['acteur'])) ?>.com</a>
-            <p><?= nl2br($acteur['description']) ?></p>
+            <p><?= nl2br(htmlspecialchars($acteur['description'])) ?></p>
         </div>
     </div>
 

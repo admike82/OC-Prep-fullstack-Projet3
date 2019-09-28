@@ -1,6 +1,6 @@
 <h2>Modifier un commentaire</h2>
 <div class="logoShowActeur text-center mb-20">
-    <img src="/images/<?= $acteur['logo'] ?>" alt="logo de <?= $acteur['acteur'] ?>" />
+    <img src="/images/<?= htmlspecialchars($acteur['logo']) ?>" alt="logo de <?= htmlspecialchars($acteur['acteur']) ?>" />
 </div>
 
 <form action="#" method="post">
