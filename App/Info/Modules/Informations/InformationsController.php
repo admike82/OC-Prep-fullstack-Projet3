@@ -101,6 +101,7 @@ class InformationsController extends BackController
                 $subject = 'Messsage envoyé de GBAF';
                 $message = "Message de : " . $prenom . " " . $nom . ". \n\n" . "message : \n" . $message;
                 $headers = array(
+                    'Content-Type' => 'Content-Type: text/plain; charset="iso-8859-1"',
                     'From' => $mail,
                     'Reply-To' => $mail,
                     'X-Mailer' => 'PHP/' . phpversion()
