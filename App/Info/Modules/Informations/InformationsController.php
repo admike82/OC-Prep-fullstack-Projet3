@@ -99,14 +99,16 @@ class InformationsController extends BackController
             if ($valid) {
                 $to      = $this->app->config()->get('mail');
                 $subject = 'Messsage envoyé de GBAF';
-                $message = "Message de : " . $prenom . " " . $nom . ". \n\n" . "message : \n" . $message;
+                $message = "Message de : " . htmlspecialchars_decode($prenom) . " " . htmlspecialchars_decode($nom) . ". \n\n" . "message : \n" . htmlspecialchars_decode($message);
                 $headers = array(
+                    'Content-type' => 'text/plain; cahrset=utf-8',
+                    'Content-Transfer-Encoding' => '8bit',
                     'From' => $mail,
                     'Reply-To' => $mail,
                     'X-Mailer' => 'PHP/' . phpversion()
                 );
 
-                if (mail($to, $subject, utf8_decode($message), $headers)) {
+                if (mail($to, $subject, $message, $headers)) {
                     $this->app->user()->setFlash([
                         'class' => 'success',
                         'message' => 'Le message a bien été envoyé'
