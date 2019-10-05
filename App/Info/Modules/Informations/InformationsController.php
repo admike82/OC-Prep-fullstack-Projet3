@@ -101,7 +101,7 @@ class InformationsController extends BackController
                 $subject = 'Messsage envoyé de GBAF';
                 $message = "Message de : " . htmlspecialchars_decode($prenom) . " " . htmlspecialchars_decode($nom) . ". \n\n" . "message : \n" . htmlspecialchars_decode($message);
                 $headers = array(
-                    'Content-type' => 'text/plain; cahrset=utf-8',
+                    'Content-type' => 'text/plain; charset=utf-8',
                     'Content-Transfer-Encoding' => '8bit',
                     'From' => $mail,
                     'Reply-To' => $mail,
