@@ -12,5 +12,5 @@
 </p>
 
 <div class="form-button">
-    <a href="/" class="btn">Retour a l'acceuil</a>
+    <a href="/" class="btn bg-bluelight">Retour a l'acceuil</a>
 </div>

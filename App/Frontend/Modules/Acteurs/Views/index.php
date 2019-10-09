@@ -20,9 +20,9 @@
                     <p><?= nl2br(htmlspecialchars($acteur['description'])) ?></p>
                     <a href="#">www.<?= str_replace(' ', '-', strtolower($acteur['acteur'])) ?>.com</a>
                     <div class="more">
-                        <a href="acteur-<?= $acteur['idActeur'] ?>.html" class="btn">lire la suite</a>
+                        <a href="acteur-<?= $acteur['idActeur'] ?>.html" class="btn bg-bluelight">lire la suite</a>
                     </div>
-                    
+
                 </div>
             </div>
         <?php } ?>

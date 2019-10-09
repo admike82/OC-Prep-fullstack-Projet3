@@ -3,7 +3,7 @@
 <div class="flex user-page">
     <div class="menu-user">
         <a href="/update-user.html" class="menu-user-item btn-dark">Données personnelles</a>
-        <a href="/modify-password.html" class="menu-user-item btn-active">Changer de mot de passe</a>
+        <a href="/modify-password.html" class="menu-user-item btn-active bg-bluelight">Changer de mot de passe</a>
         <a href="delete-user.html" class="menu-user-item btn-dark del">Supprimmer le compte</a>
     </div>
 

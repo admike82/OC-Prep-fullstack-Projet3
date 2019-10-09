@@ -152,6 +152,10 @@ a:hover{
     font-size: 16px;
 }
 
+.bg-bluelight{
+    background-color: #EDF2F4;
+}
+
 a.btn-active {
     box-shadow: none;
     pointer-events: none;
