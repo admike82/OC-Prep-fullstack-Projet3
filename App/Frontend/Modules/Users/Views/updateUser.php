@@ -15,7 +15,7 @@
             <?= $form ?>
             <div class="form-button">
                 <button type="submit" class="btn">Modifier</button>
-                <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
+                <a href="/" class="btn">Retour à l'accueil</a>
             </div>
         </form>
     </div>

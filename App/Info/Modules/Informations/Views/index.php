@@ -12,5 +12,5 @@
 </p>
 
 <div class="form-button">
-    <a href="/"><button type="button" class="btn">Retour a l'acceuil</button></a>
+    <a href="/" class="btn">Retour a l'acceuil</a>
 </div>

@@ -143,6 +143,7 @@ a:hover{
 .btn, .btn-active {
     border : 1px solid #2b2d42;
     border-radius: 5px;
+    background-color: white;
     color: #2b2d42;
     padding: 10px 10px;
     display: inline-block;
