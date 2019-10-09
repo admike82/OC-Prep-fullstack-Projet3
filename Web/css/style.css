@@ -148,6 +148,8 @@ a:hover{
     padding: 10px 10px;
     display: inline-block;
     text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 16px;
 }
 
 a.btn-active {
@@ -163,6 +165,8 @@ a.btn-active {
     padding: 10px 10px;
     display: inline-block;
     text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 16px;
 }
 
 .btn-dark:hover {
