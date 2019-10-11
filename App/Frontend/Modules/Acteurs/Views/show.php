@@ -40,10 +40,10 @@
                 <span class="flex-between">
                     <small><?= htmlspecialchars($post['user']['prenom']) ?></small>
                     <small><?= $post['post']['dateAdd']->format('d/m/Y à H\hi') ?> <?php
-                                                                                        if ($post['post']['idUser'] == $user->getAttribute('account')['idUser']) {
-                                                                                            ?><a href="comment-<?= $post['post']['idPost'] ?>-update.html" title="Modifier"><img src="images/modif.png" alt="modify"></a>
+                        if ($post['post']['idUser'] == $user->getAttribute('account')['idUser']) {
+                            ?><a href="comment-<?= $post['post']['idPost'] ?>-update.html" title="Modifier"><img src="images/modif.png" alt="modify"></a>
                             <a href="comment-<?= $post['post']['idPost'] ?>-del.html" title="Supprimer"><img src="images/delete.png" alt="delete"></a><?php
-                                                                                                                                                            } ?></small>
+                        } ?></small>
                 </span>
                 <p><?= nl2br(htmlspecialchars($post['post']['post'])) ?></p>
             </div>
