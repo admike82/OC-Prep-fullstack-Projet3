@@ -26,7 +26,7 @@ class PostsManagerPDO extends PostsManager {
     }
 
     public function getListOf(int $idActeur) {
-        $q = $this->dao->prepare('SELECT id_post as idPost, id_user as idUser, id_acteur as idActeur, post, date_add as dateAdd FROM post WHERE id_acteur = :id');
+        $q = $this->dao->prepare('SELECT id_post as idPost, id_user as idUser, id_acteur as idActeur, post, date_add as dateAdd FROM post WHERE id_acteur = :id ORDER BY date_add DESC');
         $q->bindValue(':id', $idActeur, \PDO::PARAM_INT);
         $q->execute();
 

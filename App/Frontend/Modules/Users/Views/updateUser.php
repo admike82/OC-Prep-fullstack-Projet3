@@ -14,7 +14,7 @@
             </script>
             <?= $form ?>
             <div class="form-button">
-                <button type="submit" class="btn">Modifier</button>
+                <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir appliquer les modifications ?')">Modifier</button>
                 <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
             </div>
         </form>

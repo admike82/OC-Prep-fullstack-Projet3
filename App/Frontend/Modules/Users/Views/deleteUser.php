@@ -15,7 +15,7 @@
             <label>Veuillez saisir votre mot de passe pour confirmer la suppression du compte</label>
             <input type="password" name="password" class="form-control" /><br />
             <div class="form-button">
-                <button type="submit" class="btn">Supprimmer</button>
+                <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimmer</button>
                 <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
             </div>
         </form>
