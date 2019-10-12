@@ -4,7 +4,7 @@
     <div class="menu-user">
         <a href="/update-user.html" class="menu-user-item btn-dark">Données personnelles</a>
         <a href="/modify-password.html" class="menu-user-item btn-dark">Changer de mot de passe</a>
-        <a href="/delete-user.html" class="menu-user-item btn-active del">Supprimmer le compte</a>
+        <a href="/delete-user.html" class="menu-user-item btn-active bg-bluelight del">Supprimmer le compte</a>
     </div>
 
     <div class="form-group">
@@ -16,7 +16,7 @@
             <input type="password" name="password" class="form-control" /><br />
             <div class="form-button">
                 <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimmer</button>
-                <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
+                <a href="/" class="btn">Retour à l'accueil</a>
             </div>
         </form>
     </div>

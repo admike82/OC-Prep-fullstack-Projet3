@@ -3,7 +3,7 @@
 <div class="flex user-page">
     <div class="menu-user">
         <a href="/update-user.html" class="menu-user-item btn-dark">Données personnelles</a>
-        <a href="/modify-password.html" class="menu-user-item btn-active">Changer de mot de passe</a>
+        <a href="/modify-password.html" class="menu-user-item btn-active bg-bluelight">Changer de mot de passe</a>
         <a href="delete-user.html" class="menu-user-item btn-dark del">Supprimmer le compte</a>
     </div>
 
@@ -20,7 +20,7 @@
             <input type="password" name="confirmPassword" class="form-control" /><br />
             <div class="form-button">
                 <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir changer le mot de passe ?')">Modifier</button>
-                <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
+                <a href="/" class="btn">Retour à l'accueil</a>
             </div>
         </form>
     </div>

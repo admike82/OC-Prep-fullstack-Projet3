@@ -11,7 +11,7 @@
         <?= $form ?>
         <div class="form-button">
             <button type="submit" class="btn">Enregistrer</button>
-            <a href="/acteur-<?= $acteur['idActeur'] ?>.html"><button type="button" class="btn">Annuler</button></a>
+            <a href="/acteur-<?= $acteur['idActeur'] ?>.html" class="btn">Annuler</a>
         </div>
     </div>
 </form>

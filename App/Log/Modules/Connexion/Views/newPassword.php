@@ -8,7 +8,7 @@
         <?= $form ?>
         <div class="form-button">
             <button type="submit" class="btn">Enregistrer</button>
-            <a href="/"><button type="button" class="btn">Annuler</button></a>
+            <a href="/" class="btn">Annuler</a>
         </div>
     </div>
 </form>

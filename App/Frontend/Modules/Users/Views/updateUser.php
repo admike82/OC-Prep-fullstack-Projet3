@@ -2,7 +2,7 @@
 <p class="info">Le mot de passe est obligatoire pour valider les modifications !</p>
 <div class="flex user-page">
     <div class="menu-user">
-        <a href="/update-user.html" class="menu-user-item btn-active">Données personnelles</a>
+        <a href="/update-user.html" class="menu-user-item btn-active bg-bluelight">Données personnelles</a>
         <a href="/modify-password.html" class="menu-user-item btn-dark">Changer de mot de passe</a>
         <a href="delete-user.html" class="menu-user-item btn-dark del">Supprimmer le compte</a>
     </div>
@@ -15,7 +15,7 @@
             <?= $form ?>
             <div class="form-button">
                 <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir appliquer les modifications ?')">Modifier</button>
-                <a href="/"><button type="button" class="btn">Retour à l'accueil</button></a>
+                <a href="/" class="btn">Retour à l'accueil</a>
             </div>
         </form>
     </div>

@@ -18,7 +18,7 @@
                         <?= count($listPosts) ?> <?= (count($listPosts) > 1) ? 'commentaires' : 'commentaire' ?>
                     </div>
                     <div class="like">
-                        
+
                         <div>
                             <div><?= $nbrLike ?></div> <img src="/images/Like.png" alt="like" width="30px">
                         </div>
@@ -27,7 +27,7 @@
                         <?php } else { ?>
                             <a href="/acteur-<?= $acteur['idActeur'] ?>-like.html" class="btn-like">J'aime!</a>
                         <?php } ?>
-                        <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn">Nouveau Commentaire</a>
+                        <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn bg-bluelight">Nouveau Commentaire</a>
                     </div>
                 </div>
             </div>
@@ -39,14 +39,14 @@
             <div class="comment">
                 <span class="flex-between">
                     <small><?= htmlspecialchars($post['user']['prenom']) ?></small>
-                    <small><?= $post['post']['dateAdd']->format('d/m/Y à H\hi') ?> 
-                        <?php if ($post['post']['idUser'] == $user->getAttribute('account')['idUser']){ ?>
-                        <a href="comment-<?= $post['post']['idPost'] ?>-update.html" title="Modifier">
-                            <img src="images/modif.png" alt="modify">
-                        </a>
-                        <a href="comment-<?= $post['post']['idPost'] ?>-del.html" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer le commentaire ?')">
-                            <img src="images/delete.png" alt="delete">
-                        </a>
+                    <small><?= $post['post']['dateAdd']->format('d/m/Y à H\hi') ?>
+                        <?php if ($post['post']['idUser'] == $user->getAttribute('account')['idUser']) { ?>
+                            <a href="comment-<?= $post['post']['idPost'] ?>-update.html" title="Modifier">
+                                <img src="images/modif.png" alt="modify">
+                            </a>
+                            <a href="comment-<?= $post['post']['idPost'] ?>-del.html" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer le commentaire ?')">
+                                <img src="images/delete.png" alt="delete">
+                            </a>
                         <?php } ?>
                     </small>
                 </span>
@@ -56,6 +56,6 @@
 
     </div>
     <div class="form-button">
-        <a href="/"><button type="button" class="btn">Retour a l'acceuil</button></a>
+        <a href="/" class="btn bg-bluelight">Retour à l'acceuil</a>
     </div>
 </section>
