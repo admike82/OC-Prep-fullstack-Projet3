@@ -1,4 +1,4 @@
-<h1>Mentions Légales</h1>
+<h1><?= $title ?></h1>
 
 <p class="mentions-legales form-group">Les données personnelles sécurisées figurant sur ce site Internet concernent les utilisateurs.
     GBAF ne collecte aucune donnée personnelle directement sur le site Internet, ni cookie.<br> <br>

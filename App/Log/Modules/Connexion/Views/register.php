@@ -1,4 +1,4 @@
-<h2>Creer un compte</h2>
+<h1><?= $title ?></h1>
 <form action="#" method="post">
     <script>
         document.querySelector("form").setAttribute("action", "")

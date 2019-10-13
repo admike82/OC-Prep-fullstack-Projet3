@@ -57,7 +57,7 @@ class ConnexionController extends BackController
      */
     public function executeForget(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Question secrète');
+        $this->page->addVar('title', 'Mot de passe oublié');
         if ($request->postExists('username')) {
             $username = $request->postData('username');
             $question = $request->postData('question');
@@ -170,7 +170,7 @@ class ConnexionController extends BackController
      */
     public function executeRegister(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Inscription');
+        $this->page->addVar('title', 'Créer un compte');
 
         if ($request->method() == 'POST') {
             $account = new Account([

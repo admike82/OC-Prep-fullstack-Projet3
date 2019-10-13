@@ -1,4 +1,4 @@
-<h2>Nous contacter</h2>
+<h1><?= $title ?></h1>
 <div class="form-group">
     <form action="#" method="post">
         <script>

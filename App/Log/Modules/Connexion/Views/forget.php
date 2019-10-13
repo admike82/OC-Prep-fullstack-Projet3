@@ -1,4 +1,4 @@
-<h2>Mot de passe oublié</h2>
+<h1><?= $title ?></h1>
 
 <form action="#" method="post">
     <script>

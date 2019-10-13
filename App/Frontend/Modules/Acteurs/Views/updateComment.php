@@ -1,4 +1,4 @@
-<h2>Modifier un commentaire</h2>
+<h2><?= $title ?></h2>
 <div class="logoShowActeur text-center mb-20">
     <img src="/images/<?= htmlspecialchars($acteur['logo']) ?>" alt="logo de <?= htmlspecialchars($acteur['acteur']) ?>" />
 </div>
