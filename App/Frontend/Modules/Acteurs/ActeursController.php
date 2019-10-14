@@ -45,10 +45,15 @@ class ActeursController extends BackController {
         if (empty($acteur)){
             $this->app->httpResponse()->redirect404();
         }
-        $nbrLike = $this->managers->getManagerOf('Votes')->countLike($acteur->idActeur());
+        $managerVotes = $this->managers->getManagerOf('Votes');
+
+        $nbrLike = $managerVotes->countLike($acteur->idActeur());
+        $nbrDislike = $managerVotes->countDislike($acteur->idActeur());
         $Comments = $this->managers->getManagerOf('Posts')->getListOf($acteur->idActeur());
-        $vote = $this->managers->getManagerOf('Votes')->get($this->app->user()->getAttribute('account')['idUser'], $acteur->idActeur());
-        empty($vote)?$like=false:$like=true;
+        
+        $vote = $managerVotes->get($this->app->user()->getAttribute('account')['idUser'], $acteur->idActeur());
+        
+        empty($vote)?$like='':$like = $vote->vote();;
         $listPosts = [];
         if (!empty($Comments)) {
             foreach ($Comments as $comment){
@@ -56,11 +61,12 @@ class ActeursController extends BackController {
                 $listPosts[] = ['post' => $comment, 'user' => $user];
             }
         }
-        $this->page->addVar('title', $acteur->acteur());
-        $this->page->addVar('acteur', $acteur);
-        $this->page->addVar('nbrLike', $nbrLike);
-        $this->page->addVar('like', $like);
-        $this->page->addVar('listPosts', $listPosts);
+        $this->page->addVar('title', $acteur->acteur())
+                   ->addVar('acteur', $acteur)
+                   ->addVar('nbrLike', $nbrLike)
+                   ->addVar('nbrDislike', $nbrDislike)
+                   ->addVar('like', $like)
+                   ->addVar('listPosts', $listPosts);
     }
 
     /**
@@ -203,12 +209,30 @@ class ActeursController extends BackController {
     }
 
     /**
-     * Suppression d'un like
+     * Ajout d'un dislike
      *
      * @param HTTPRequest $request
      * @return void
      */
     public function executeDislike(HTTPRequest $request)
+    {
+        $manager = $this->managers->getManagerOf('Votes');
+        $vote = new Vote([
+            'idUser' => $this->app->user()->getAttribute('account')['idUser'],
+            'idActeur' => $request->getData('id'),
+            'vote' => false,
+        ]);
+        $manager->save($vote);
+        $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
+    }
+
+    /**
+     * Suppression d'un vote
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
+    public function executeDelLike(HTTPRequest $request)
     {
         $this->managers->getManagerOf('Votes')->delete($this->app->user()->getAttribute('account')['idUser'], $request->getData('id'));
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');

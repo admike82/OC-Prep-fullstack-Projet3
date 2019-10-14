@@ -11,7 +11,7 @@ class Page extends ApplicationComponent
    *
    * @param string $var
    * @param mixed $value
-   * @return void
+   * @return self
    */
   public function addVar($var, $value)
   {
@@ -21,6 +21,7 @@ class Page extends ApplicationComponent
     }
 
     $this->vars[$var] = $value;
+    return $this;
   }
 
   // GETTER //

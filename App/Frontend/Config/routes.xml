@@ -6,6 +6,7 @@
   <route url="/acteur-([0-9]+)\-add.html" module="Acteurs" action="addComment" vars="id"/>
   <route url="/acteur-([0-9]+)\-like.html" module="Acteurs" action="like" vars="id"/>
   <route url="/acteur-([0-9]+)\-dislike.html" module="Acteurs" action="dislike" vars="id"/>
+  <route url="/acteur-([0-9]+)\-delLike.html" module="Acteurs" action="delLike" vars="id"/>
   <route url="/comment-([0-9]+)\-update.html" module="Acteurs" action="updateComment" vars="id"/>
   <route url="/comment-([0-9]+)\-del.html" module="Acteurs" action="deleteComment" vars="id"/>
   <route url="/update-user.html" module="Users" action="updateUser"/>

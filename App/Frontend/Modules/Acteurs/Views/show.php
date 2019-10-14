@@ -18,15 +18,17 @@
                         <?= count($listPosts) ?> <?= (count($listPosts) > 1) ? 'commentaires' : 'commentaire' ?>
                     </div>
                     <div class="like">
-
                         <div>
-                            <div><?= $nbrLike ?></div> <img src="/images/Like.png" alt="like" width="30px">
+                            <div><?= $nbrLike ?></div>
+                            <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == true ? "delLike" : "like"; ?>.html">
+                                <img src="/images/<?= $like == true ? "Like" : "Unlike"; ?>.png" alt="like" width="30px">
+                            </a>
+                            <div><?= $nbrDislike ?></div>
+                            <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == false && $like !== '' ? "delLike" : "dislike"; ?>.html">
+                                <img src="/images/<?= $like == false && $like !== '' ? "Dislike" : "Undislike"; ?>.png" alt="like" width="30px">
+                            </a>
                         </div>
-                        <?php if ($like) { ?>
-                            <a href="/acteur-<?= $acteur['idActeur'] ?>-dislike.html" class="btn-dislike"> Je n'aime plus !</a>
-                        <?php } else { ?>
-                            <a href="/acteur-<?= $acteur['idActeur'] ?>-like.html" class="btn-like">J'aime!</a>
-                        <?php } ?>
+
                         <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn bg-bluelight">Nouveau Commentaire</a>
                     </div>
                 </div>

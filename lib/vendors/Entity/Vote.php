@@ -38,7 +38,7 @@ class Vote extends Entity
     return $this->idActeur;
   }
 
-  public function vote()
+  public function vote() :bool
   {
     return $this->vote;
   }
