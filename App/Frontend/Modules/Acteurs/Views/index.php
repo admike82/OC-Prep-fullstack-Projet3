@@ -1,6 +1,6 @@
 <section id="presentation">
     <div>
-        <h1>Bienvenu sur l'extranet GBAF</h1>
+        <h1>Bienvenue sur l'extranet GBAF</h1>
         <div id="illustration"></div>
     </div>
 </section>
