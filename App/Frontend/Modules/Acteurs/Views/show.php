@@ -1,5 +1,5 @@
-<section id="acteur">
-    <div class="showActeur">
+<article id="acteur">
+    <section class="showActeur">
         <div class="logoShowActeur">
             <img src="/images/<?= htmlspecialchars($acteur['logo']) ?>" alt="logo de <?= htmlspecialchars($acteur['acteur']) ?>" />
         </div>
@@ -8,37 +8,33 @@
             <a href="#">www.<?= str_replace(' ', '-', strtolower($acteur['acteur'])) ?>.com</a>
             <p><?= nl2br(htmlspecialchars($acteur['description'])) ?></p>
         </div>
-    </div>
+    </section>
 
-    <div class="comments">
-        <div class="headComments">
-            <div class="countComments">
-                <div class="comment-flex-between">
-                    <div>
-                        <?= count($listPosts) ?> <?= (count($listPosts) > 1) ? 'commentaires' : 'commentaire' ?>
-                    </div>
-                    <div class="like">
-                        <div>
-                            <div><?= $nbrLike ?></div>
-                            <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == true ? "delLike" : "like"; ?>.html">
-                                <img src="/images/<?= $like == true ? "Like" : "Unlike"; ?>.png" alt="like" width="30px">
-                            </a>
-                            <div><?= $nbrDislike ?></div>
-                            <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == false && $like !== '' ? "delLike" : "dislike"; ?>.html">
-                                <img src="/images/<?= $like == false && $like !== '' ? "Dislike" : "Undislike"; ?>.png" alt="like" width="30px">
-                            </a>
-                        </div>
-
-                        <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn bg-bluelight">Nouveau Commentaire</a>
-                    </div>
+    <section class="comments">
+        <div class="comment-flex-between">
+            <div>
+                <?= count($listPosts) ?> <?= (count($listPosts) > 1) ? 'commentaires' : 'commentaire' ?>
+            </div>
+            <div class="like">
+                <div>
+                    <div><?= $nbrLike ?></div>
+                    <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == true ? "delLike" : "like"; ?>.html">
+                        <img src="/images/<?= $like == true ? "Like" : "Unlike"; ?>.png" alt="like" width="30px">
+                    </a>
+                    <div><?= $nbrDislike ?></div>
+                    <a href="/acteur-<?= $acteur['idActeur'] ?>-<?= $like == false && $like !== '' ? "delLike" : "dislike"; ?>.html">
+                        <img src="/images/<?= $like == false && $like !== '' ? "Dislike" : "Undislike"; ?>.png" alt="like" width="30px">
+                    </a>
                 </div>
+
+                <a href="/acteur-<?= $acteur['idActeur'] ?>-add.html" class="btn bg-bluelight">Nouveau Commentaire</a>
             </div>
         </div>
         <?php if (empty($listPosts)) { ?>
             <p class="no-comment">Aucun commentaire n'a encore été posté. Soyez le premier à en laisser un !</p>
         <?php }
         foreach ($listPosts as $post) { ?>
-            <div class="comment">
+            <section class="comment">
                 <span class="flex-between">
                     <small><?= htmlspecialchars($post['user']['prenom']) ?></small>
                     <small><?= $post['post']['dateAdd']->format('d/m/Y à H\hi') ?>
@@ -53,11 +49,11 @@
                     </small>
                 </span>
                 <p><?= nl2br(htmlspecialchars($post['post']['post'])) ?></p>
-            </div>
+            </section>
         <?php } ?>
 
-    </div>
-    <div class="form-button">
+    </section>
+    <section class="form-button">
         <a href="/" class="btn bg-bluelight">Retour à l'acceuil</a>
-    </div>
-</section>
+    </section>
+</article>

@@ -1,5 +1,5 @@
 <h1><?= $title ?></h1>
-<div class="form-group">
+<section class="form-group">
     <form action="#" method="post">
         <script>
             document.querySelector("form").setAttribute("action", "")
@@ -10,4 +10,4 @@
             <a href="/" class="btn">Retour à l'accueil</a>
         </div>
     </form>
-</div>
+</section>

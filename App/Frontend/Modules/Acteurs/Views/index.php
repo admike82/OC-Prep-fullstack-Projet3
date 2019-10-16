@@ -1,20 +1,18 @@
 <section id="presentation">
-    <div>
         <h1>Bienvenue sur l'extranet GBAF</h1>
         <div id="illustration"></div>
-    </div>
 </section>
 
 <section id="acteurs">
     <div class="headerList">
         <h2>Acteurs et partenaires</h2>
     </div>
-    <div class="listActeur">
+    <article class="listActeur">
         <?php foreach ($listeActeurs as $acteur) { ?>
-            <div class="acteur">
-                <div class="logoActeur">
+            <section class="acteur">
+                <figure class="logoActeur">
                     <img src="/images/<?= htmlspecialchars($acteur['logo']) ?>" alt="logo de <?= htmlspecialchars($acteur['acteur']) ?>" />
-                </div>
+                </figure>
                 <div class="contentActeur">
                     <h3><?= $acteur['acteur'] ?></h3>
                     <p><?= nl2br(htmlspecialchars($acteur['description'])) ?></p>
@@ -23,7 +21,7 @@
                         <a href="acteur-<?= $acteur['idActeur'] ?>.html" class="btn bg-bluelight">lire la suite</a>
                     </div>
                 </div>
-            </div>
+            </section>
         <?php } ?>
-    </div>
+    </article>
 </section>
