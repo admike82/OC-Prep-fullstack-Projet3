@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 session_start();
@@ -10,7 +11,8 @@ class User
    *
    * @return void
    */
-  public function logOut() {
+  public function logOut()
+  {
     session_destroy();
   }
 
@@ -46,14 +48,13 @@ class User
   }
 
   // GETTERS //
-
+  
   public function getAttribute($attr)
   {
     return isset($_SESSION[$attr]) ? $_SESSION[$attr] : null;
   }
 
-  public function getFlash()
-  {
+  public function getFlash(){
     $flash = $_SESSION['flash'];
     unset($_SESSION['flash']);
 
@@ -69,8 +70,7 @@ class User
 
   public function setAuthenticated($authenticated = true)
   {
-    if (!is_bool($authenticated))
-    {
+    if (!is_bool($authenticated)) {
       throw new \InvalidArgumentException('La valeur spécifiée à la méthode User::setAuthenticated() doit être un boolean');
     }
 

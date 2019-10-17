@@ -22,7 +22,7 @@ abstract class Application
   /**
    * Méthode permettant d'instancier le controller
    *
-   * @return void
+   * @return BackController
    */
   public function getController()
   {
@@ -79,27 +79,27 @@ abstract class Application
 
   // GETTERS //
   
-  public function httpRequest()
+  public function httpRequest() : HTTPRequest
   {
     return $this->httpRequest;
   }
 
-  public function httpResponse()
+  public function httpResponse() : HTTPResponse
   {
     return $this->httpResponse;
   }
 
-  public function name()
+  public function name() : string
   {
     return $this->name;
   }
 
-  public function config()
+  public function config() : Config
   {
     return $this->config;
   }
 
-  public function user()
+  public function user() : User
   {
     return $this->user;
   }

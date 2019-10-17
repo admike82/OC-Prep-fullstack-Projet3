@@ -63,7 +63,7 @@ abstract class AccountsManager extends Manager
    * Méthode retournant une liste de compte demandée.
    * @param $debut int La première compte à sélectionner
    * @param $limite int Le nombre de compte à sélectionner
-   * @return array La liste des compte. Chaque entrée est une instance de Account.
+   * @return Account[] La liste des compte. Chaque entrée est une instance de Account.
    */
   abstract public function getList($debut = -1, $limite = -1);
 }

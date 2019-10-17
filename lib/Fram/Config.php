@@ -9,7 +9,7 @@ class Config extends ApplicationComponent
    * Récupération des variables de configuration du composant
    *
    * @param string $var
-   * @return void
+   * @return mixed|null
    */
   public function get($var)
   {

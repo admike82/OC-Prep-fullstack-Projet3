@@ -3,6 +3,7 @@ namespace Fram;
 
 class Router
 {
+  /** @var Route[] $routes */
   protected $routes = [];
 
   const NO_ROUTE = 1;
@@ -23,7 +24,7 @@ class Router
 
   // GETTER //
   
-  public function getRoute($url)
+  public function getRoute($url): Route
   {
     foreach ($this->routes as $route)
     {

@@ -4,29 +4,49 @@ namespace App\Frontend\Modules\Acteurs;
 
 use Entity\Post;
 use Entity\Vote;
+use Fram\Application;
 use Fram\FormHandler;
 use Fram\HTTPRequest;
 use Fram\BackController;
+use Model\PostsManagerPDO;
+use Model\VotesManagerPDO;
+use Model\ActeursManagerPDO;
+use Model\AccountsManagerPDO;
 use FormBuilder\PostFormBuilder;
 
-class ActeursController extends BackController {
-    
+class ActeursController extends BackController
+{
+    /** @var AccountsManagerPDO $accountsManager */
+    protected $accountsManager;
+    /** @var ActeursManagerPDO $acteursManager */
+    protected $acteursManager;
+    /** @var PostsManagerPDO $postsManager */
+    protected $postsManager;
+    /** @var VotesManagerPDO $votesManager */
+    protected $votesManager;
+
+    public function __construct(Application $app, $module, $action)
+    {
+        parent::__construct($app, $module, $action);
+        $this->accountsManager = $this->managers->getManagerOf('Accounts');
+        $this->acteursManager = $this->managers->getManagerOf('Acteurs');
+        $this->postsManager = $this->managers->getManagerOf('Posts');
+        $this->votesManager = $this->managers->getManagerOf('Votes');
+    }
+
     /**
      * Generation de la page d'accueil, utilisteur connecté
-     *
      * @return void
      */
     public function executeIndex()
     {
         $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
         $this->page->addVar('title', 'Listes des acteurs');
-        $manager = $this->managers->getManagerOf('Acteurs');
-        $listeActeurs = $manager->getList();
+        $listeActeurs = $this->acteursManager->getList();
         foreach ($listeActeurs as $acteur) {
             if (strlen($acteur->description()) > $nombreCaracteres) {
                 $debut = substr($acteur->description(), 0, $nombreCaracteres);
                 $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
-
                 $acteur->setDescription($debut);
             }
         }
@@ -35,51 +55,49 @@ class ActeursController extends BackController {
 
     /**
      * génération de la page détail de l'acteur
-     *
      * @param HTTPRequest $request
      * @return void
      */
     public function executeShow(HTTPRequest $request)
     {
-        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($request->getData('id'));
-        if (empty($acteur)){
+        $acteur = $this->acteursManager->getUnique($request->getData('id'));
+        if (empty($acteur)) {
             $this->app->httpResponse()->redirect404();
         }
-        $managerVotes = $this->managers->getManagerOf('Votes');
 
-        $nbrLike = $managerVotes->countLike($acteur->idActeur());
-        $nbrDislike = $managerVotes->countDislike($acteur->idActeur());
-        $Comments = $this->managers->getManagerOf('Posts')->getListOf($acteur->idActeur());
-        
-        $vote = $managerVotes->get($this->app->user()->getAttribute('account')['idUser'], $acteur->idActeur());
-        
-        empty($vote)?$like='':$like = $vote->vote();;
+        $nbrLike = $this->votesManager->countLike($acteur->idActeur());
+        $nbrDislike = $this->votesManager->countDislike($acteur->idActeur());
+
+        $comments = $this->postsManager->getListOf($acteur->idActeur());
+
+        $vote = $this->votesManager->get($this->app->user()->getAttribute('account')['idUser'], $acteur->idActeur());
+
+        empty($vote) ? $like = '' : $like = $vote->vote();;
         $listPosts = [];
-        if (!empty($Comments)) {
-            foreach ($Comments as $comment){
-                $user = $this->managers->getManagerOf('Accounts')->get($comment['idUser']);
+        if (!empty($comments)) {
+            foreach ($comments as $comment) {
+                $user = $this->accountsManager->get($comment->idUser());
                 $listPosts[] = ['post' => $comment, 'user' => $user];
             }
         }
         $this->page->addVar('title', $acteur->acteur())
-                   ->addVar('acteur', $acteur)
-                   ->addVar('nbrLike', $nbrLike)
-                   ->addVar('nbrDislike', $nbrDislike)
-                   ->addVar('like', $like)
-                   ->addVar('listPosts', $listPosts);
+            ->addVar('acteur', $acteur)
+            ->addVar('nbrLike', $nbrLike)
+            ->addVar('nbrDislike', $nbrDislike)
+            ->addVar('like', $like)
+            ->addVar('listPosts', $listPosts);
     }
 
     /**
      * Génération de la page ajout d'un commentaire
-     *
      * @param HTTPRequest $request
      * @return void
      */
-    public function executeAddComment(HTTPRequest $request) 
+    public function executeAddComment(HTTPRequest $request)
     {
-        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($request->getData('id'));
+        $acteur = $this->acteursManager->getUnique($request->getData('id'));
         $this->page->addVar('title', 'Ajouter un commentaire sur ' . $acteur->acteur());
-        // à modifier
+
         if ($request->method() == 'POST') {
             $post = new Post([
                 'idUser' => $this->app->user()->getAttribute('account')['idUser'],
@@ -95,13 +113,13 @@ class ActeursController extends BackController {
 
         $form = $formBuilder->form();
 
-        $formHandler = new FormHandler($form, $this->managers->getManagerOf('Posts'), $request);
+        $formHandler = new FormHandler($form, $this->postsManager, $request);
 
         if ($formHandler->process()) {
             $this->app->user()->setFlash([
                 'class' => 'success',
                 'message' => 'Le commentaire a bien été ajouté'
-                ]);
+            ]);
 
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }
@@ -118,23 +136,23 @@ class ActeursController extends BackController {
      */
     public function executeUpdateComment(HTTPRequest $request)
     {
-        $post = $this->managers->getManagerOf('Posts')->get($request->getData('id'));
-        if (empty($post)){
+        $post = $this->postsManager->get($request->getData('id'));
+        if (empty($post)) {
             $this->app->httpResponse()->redirect404();
         }
-        
-        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($post->idActeur());
 
-        if ($post->idUser() != $this->app->user()->getAttribute('account')['idUser']){
+        $acteur = $this->acteursManager->getUnique($post->idActeur());
+
+        if ($post->idUser() != $this->app->user()->getAttribute('account')['idUser']) {
             $this->app->user()->setFlash([
                 'class' => 'danger',
                 'message' => 'Vous pouvez modifier uniquement vos commentaires !'
             ]);
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }
-        
+
         $this->page->addVar('title', 'Modifier un commentaire sur ' . $acteur->acteur());
-        
+
         if ($request->method() == 'POST') {
             $post->setPost($request->postData('post'));
         }
@@ -144,7 +162,7 @@ class ActeursController extends BackController {
 
         $form = $formBuilder->form();
 
-        $formHandler = new FormHandler($form, $this->managers->getManagerOf('Posts'), $request);
+        $formHandler = new FormHandler($form, $this->postsManager, $request);
 
         if ($request->method() == 'POST' && $formHandler->process()) {
             $this->app->user()->setFlash([
@@ -165,10 +183,9 @@ class ActeursController extends BackController {
      * @param HTTPRequest $request
      * @return void
      */
-    public function executeDeleteComment(HTTPRequest $request) 
+    public function executeDeleteComment(HTTPRequest $request)
     {
-        $manager = $this->managers->getManagerOf('Posts');
-        $post = $manager->get($request->getData('id'));
+        $post = $this->postsManager->get($request->getData('id'));
         if (empty($post)) {
             $this->app->httpResponse()->redirect404();
         }
@@ -181,8 +198,8 @@ class ActeursController extends BackController {
             $this->app->httpResponse()->redirect('/acteur-' . $post->idActeur() . '.html');
         }
 
-        $acteur = $this->managers->getManagerOf('Acteurs')->getUnique($post->idActeur());
-        $manager->delete($post->idPost());
+        $acteur = $this->acteursManager->getUnique($post->idActeur());
+        $this->postsManager->delete($post->idPost());
         $this->app->user()->setFlash([
             'class' => 'success',
             'message' => 'Le commentaire a bien été supprimé !'
@@ -196,15 +213,14 @@ class ActeursController extends BackController {
      * @param HTTPRequest $request
      * @return void
      */
-    public function executeLike(HTTPRequest $request) 
+    public function executeLike(HTTPRequest $request)
     {
-        $manager = $this->managers->getManagerOf('Votes');
         $vote = new Vote([
             'idUser' => $this->app->user()->getAttribute('account')['idUser'],
             'idActeur' => $request->getData('id'),
             'vote' => true,
         ]);
-        $manager->save($vote);
+        $this->votesManager->save($vote);
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
     }
 
@@ -216,13 +232,12 @@ class ActeursController extends BackController {
      */
     public function executeDislike(HTTPRequest $request)
     {
-        $manager = $this->managers->getManagerOf('Votes');
         $vote = new Vote([
             'idUser' => $this->app->user()->getAttribute('account')['idUser'],
             'idActeur' => $request->getData('id'),
             'vote' => false,
         ]);
-        $manager->save($vote);
+        $this->votesManager->save($vote);
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
     }
 
@@ -234,7 +249,7 @@ class ActeursController extends BackController {
      */
     public function executeDelLike(HTTPRequest $request)
     {
-        $this->managers->getManagerOf('Votes')->delete($this->app->user()->getAttribute('account')['idUser'], $request->getData('id'));
+        $this->votesManager->delete($this->app->user()->getAttribute('account')['idUser'], $request->getData('id'));
         $this->app->httpResponse()->redirect('/acteur-' . $request->getData('id') . '.html');
     }
 

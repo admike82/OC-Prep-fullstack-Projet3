@@ -1,4 +1,5 @@
 <?php
+
 namespace Entity;
 
 use \Fram\Entity;
@@ -6,12 +7,12 @@ use \Fram\Entity;
 class Account extends Entity
 {
   protected $idUser,
-            $nom,
-            $prenom,
-            $username,
-            $password,
-            $question,
-            $reponse;
+    $nom,
+    $prenom,
+    $username,
+    $password,
+    $question,
+    $reponse;
 
   const NOM_INVALIDE = 1;
   const PRENOM_INVALIDE = 2;
@@ -49,8 +50,7 @@ class Account extends Entity
 
   public function setNom(string $nom)
   {
-    if (!is_string($nom) || empty($nom))
-    {
+    if (!is_string($nom) || empty($nom)) {
       $this->erreurs[] = self::NOM_INVALIDE;
     }
     $this->nom = $nom;
@@ -58,8 +58,7 @@ class Account extends Entity
 
   public function setPrenom(string $prenom)
   {
-    if (!is_string($prenom) || empty($prenom))
-    {
+    if (!is_string($prenom) || empty($prenom)) {
       $this->erreurs[] = self::PRENOM_INVALIDE;
     }
     $this->prenom = $prenom;
@@ -67,8 +66,7 @@ class Account extends Entity
 
   public function setUsername(string $username)
   {
-    if (!is_string($username) || empty($username))
-    {
+    if (!is_string($username) || empty($username)) {
       $this->erreurs[] = self::USERNAME_INVALIDE;
     }
     $this->username = $username;
@@ -76,8 +74,7 @@ class Account extends Entity
 
   public function setPassword(string $password)
   {
-    if (!is_string($password) || empty($password)) 
-    {
+    if (!is_string($password) || empty($password)) {
       $this->erreurs[] = self::PASSWORD_INVALIDE;
     }
     $this->password = $password;

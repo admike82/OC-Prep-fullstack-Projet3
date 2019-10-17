@@ -50,7 +50,7 @@ abstract class ActeursManager extends Manager
    * Méthode retournant une liste d'acteur demandée.
    * @param $debut int Le premier acteur à sélectionner
    * @param $limite int Le nombre d'acteur à sélectionner
-   * @return array La liste des acteurs. Chaque entrée est une instance de Acteur.
+   * @return Acteur[] La liste des acteurs. Chaque entrée est une instance de Acteur.
    */
   abstract public function getList($debut = -1, $limite = -1);
 

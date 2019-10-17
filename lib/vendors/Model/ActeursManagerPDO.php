@@ -1,11 +1,14 @@
 <?php
+
 namespace Model;
 
 use \Entity\Acteur;
 
-class ActeursManagerPDO extends ActeursManager {
+class ActeursManagerPDO extends ActeursManager
+{
 
-    protected function add(Acteur $acteur){
+    protected function add(Acteur $acteur)
+    {
         $requete = $this->dao->prepare('INSERT INTO acteur SET acteur = :acteur, description = :description, logo = :logo');
 
         $requete->bindValue(':acteur', $acteur->acteur());
@@ -17,17 +20,20 @@ class ActeursManagerPDO extends ActeursManager {
         $acteur->setIdActeur($this->dao->lastInsertId());
     }
 
-    public function count(){
+    public function count()
+    {
         return $this->dao->query('SELECT COUNT(*) FROM acteur')->fetchColumn();
     }
 
-    public function delete(int $idActeur){
+    public function delete(int $idActeur)
+    {
         $this->dao->exec('DELETE FROM post WHERE id_acteur = ' . $idActeur);
         $this->dao->exec('DELETE FROM vote WHERE id_acteur = ' . $idActeur);
-        $this->dao->exec('DELETE FROM acteur WHERE id_acteur = ' .$idActeur);
+        $this->dao->exec('DELETE FROM acteur WHERE id_acteur = ' . $idActeur);
     }
 
-    public function getList($debut = -1, $limite = -1){
+    public function getList($debut = -1, $limite = -1)
+    {
         $sql = 'SELECT id_acteur as idActeur, acteur, description, logo FROM acteur ORDER BY id_acteur DESC';
 
         if ($debut != -1 || $limite != -1) {
@@ -44,7 +50,8 @@ class ActeursManagerPDO extends ActeursManager {
         return $listeActeurs;
     }
 
-    public function getUnique(int $idActeur){
+    public function getUnique(int $idActeur)
+    {
         $requete = $this->dao->prepare('SELECT id_acteur as idActeur, acteur, description, logo FROM acteur WHERE id_acteur = :id');
         $requete->bindValue(':id', $idActeur, \PDO::PARAM_INT);
         $requete->execute();
@@ -57,7 +64,8 @@ class ActeursManagerPDO extends ActeursManager {
         return null;
     }
 
-    protected function modify(Acteur $acteur){
+    protected function modify(Acteur $acteur)
+    {
         $requete = $this->dao->prepare('UPDATE acteur SET acteur = :acteur, description = :description, logo = :logo WHERE id_acteur = :id');
 
         $requete->bindValue(':acteur', $acteur->acteur());

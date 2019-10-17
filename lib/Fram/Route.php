@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class Route
@@ -35,12 +36,9 @@ class Route
    */
   public function match($url)
   {
-    if (preg_match('`^'.$this->url.'$`', $url, $matches))
-    {
+    if (preg_match('`^' . $this->url . '$`', $url, $matches)) {
       return $matches;
-    }
-    else
-    {
+    } else {
       return false;
     }
   }
@@ -49,24 +47,21 @@ class Route
 
   public function setAction($action)
   {
-    if (is_string($action))
-    {
+    if (is_string($action)) {
       $this->action = $action;
     }
   }
 
   public function setModule($module)
   {
-    if (is_string($module))
-    {
+    if (is_string($module)) {
       $this->module = $module;
     }
   }
 
   public function setUrl($url)
   {
-    if (is_string($url))
-    {
+    if (is_string($url)) {
       $this->url = $url;
     }
   }
@@ -82,23 +77,23 @@ class Route
   }
 
   // GETTERS //
-  
-  public function action()
+
+  public function action(): string
   {
     return $this->action;
   }
 
-  public function module()
+  public function module(): string
   {
     return $this->module;
   }
 
-  public function vars()
+  public function vars(): array
   {
     return $this->vars;
   }
 
-  public function varsNames()
+  public function varsNames(): array
   {
     return $this->varsNames;
   }

@@ -8,7 +8,7 @@ class HTTPRequest extends ApplicationComponent
    * Récupération des données du cookie
    *
    * @param string $key
-   * @return mixed
+   * @return string|null
    */
   public function cookieData($key)
   {
@@ -51,7 +51,7 @@ class HTTPRequest extends ApplicationComponent
   /**
    * Récupération de la méthode http
    *
-   * @return mixed
+   * @return string
    */
   public function method()
   {
@@ -62,7 +62,7 @@ class HTTPRequest extends ApplicationComponent
    * Récupération de la variables POST
    *
    * @param string $key
-   * @return mixed
+   * @return string|null
    */
   public function postData($key)
   {
@@ -83,7 +83,7 @@ class HTTPRequest extends ApplicationComponent
   /**
    * Récupération de l'URI de la requète
    *
-   * @return mixed
+   * @return string
    */
   public function requestURI()
   {

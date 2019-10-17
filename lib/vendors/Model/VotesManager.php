@@ -59,7 +59,7 @@ abstract class VotesManager extends Manager {
     /**
      * Méthode permettant de récupérer une liste de vote.
      * @param $idActeur int L'identifiant de l'acteur sur lequel on veut récupérer les votes
-     * @return array
+     * @return Vote[]
      */
     abstract public function getListOf(int $idActeur);
 

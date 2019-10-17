@@ -26,6 +26,11 @@ class Page extends ApplicationComponent
 
   // GETTER //
   
+  /**
+   * Génération de la page
+   *
+   * @return string|false
+   */
   public function getGeneratedPage()
   {
     if (!file_exists($this->contentFile))

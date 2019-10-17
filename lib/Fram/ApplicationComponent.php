@@ -12,7 +12,7 @@ abstract class ApplicationComponent
   
   // GETTERS //
   
-  public function app()
+  public function app() : Application
   {
     return $this->app;
   }
