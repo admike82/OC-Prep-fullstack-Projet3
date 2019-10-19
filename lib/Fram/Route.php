@@ -34,7 +34,7 @@ class Route
    * @param string $url
    * @return mixed
    */
-  public function match($url)
+  public function match(string $url)
   {
     if (preg_match('`^' . $this->url . '$`', $url, $matches)) {
       return $matches;
@@ -45,32 +45,62 @@ class Route
 
   // SETTERS //
 
-  public function setAction($action)
+  /**
+   * renseigne l'action
+   *
+   * @param string $action
+   * @return void
+   */
+  public function setAction(string $action)
   {
     if (is_string($action)) {
       $this->action = $action;
     }
   }
 
-  public function setModule($module)
+  /**
+   * renseigne le module
+   *
+   * @param string $module
+   * @return void
+   */
+  public function setModule(string $module)
   {
     if (is_string($module)) {
       $this->module = $module;
     }
   }
 
-  public function setUrl($url)
+  /**
+   * Renseigne l'url
+   *
+   * @param string $url
+   * @return void
+   */
+  public function setUrl(string $url)
   {
     if (is_string($url)) {
       $this->url = $url;
     }
   }
 
+  /**
+   * renseigne le nom des variables
+   *
+   * @param array $varsNames
+   * @return void
+   */
   public function setVarsNames(array $varsNames)
   {
     $this->varsNames = $varsNames;
   }
 
+  /**
+   * Renseigne les variables
+   *
+   * @param array $vars
+   * @return void
+   */
   public function setVars(array $vars)
   {
     $this->vars = $vars;
@@ -78,21 +108,41 @@ class Route
 
   // GETTERS //
 
+  /**
+   * retourne l'action
+   *
+   * @return string
+   */
   public function action(): string
   {
     return $this->action;
   }
 
+  /**
+   * retourne le module
+   *
+   * @return string
+   */
   public function module(): string
   {
     return $this->module;
   }
 
+  /**
+   * retourne les variables
+   *
+   * @return array
+   */
   public function vars(): array
   {
     return $this->vars;
   }
 
+  /**
+   * Retourne le nom des variables
+   *
+   * @return array
+   */
   public function varsNames(): array
   {
     return $this->varsNames;

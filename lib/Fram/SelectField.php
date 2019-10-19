@@ -2,12 +2,13 @@
 
 namespace Fram;
 
-class SelectField extends Field {
+class SelectField extends Field
+{
     protected $selectOptions = [];
     protected $selected;
 
     /**
-     * Construction du champs
+     * Construction du champs de selection
      *
      * @return string
      */
@@ -16,7 +17,7 @@ class SelectField extends Field {
         $widget = '';
 
         if (!empty($this->errorMessage)) {
-            $widget .= '<div class="form-error">'.$this->errorMessage . '</div>';
+            $widget .= '<div class="form-error">' . $this->errorMessage . '</div>';
         }
 
         $widget .= '<label>' . $this->label . '</label>
@@ -24,11 +25,11 @@ class SelectField extends Field {
         <option value ="" selected disabled >--- Selectionnez une question ---</option>';
 
         foreach ($this->selectOptions as $selectOption) {
-            $widget .= '<option value ="'. $selectOption.'"';
-            if ($selectOption == $this->selected){
+            $widget .= '<option value ="' . $selectOption . '"';
+            if ($selectOption == $this->selected) {
                 $widget .= ' selected ';
             }
-            $widget .= '>'. $selectOption.'</option>
+            $widget .= '>' . $selectOption . '</option>
             ';
         }
 
@@ -37,14 +38,28 @@ class SelectField extends Field {
     }
 
     // SETTERS //
-    
-    public function setSelectOptions (array $selectOptions) {
-        if (count($selectOptions) > 0){
+
+    /**
+     * Renseigne les options
+     *
+     * @param array $selectOptions
+     * @return void
+     */
+    public function setSelectOptions(array $selectOptions)
+    {
+        if (count($selectOptions) > 0) {
             $this->selectOptions = $selectOptions;
         }
     }
 
-    public function setSelected($selected) {
+    /**
+     * Renseigne la valeur selectionné
+     *
+     * @param mixed $selected
+     * @return void
+     */
+    public function setSelected($selected)
+    {
         $this->selected = $selected;
     }
 }

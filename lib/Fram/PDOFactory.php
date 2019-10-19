@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class PDOFactory
@@ -18,9 +19,9 @@ class PDOFactory
     foreach ($elements as $element) {
       $vars[$element->getAttribute('var')] = $element->getAttribute('value');
     }
-    $db = new \PDO('mysql:host='.$vars["dbhost"].';dbname='.$vars["dbname"].';charset=utf8', $vars["dbuser"], $vars["dbmdp"]);
+    $db = new \PDO('mysql:host=' . $vars["dbhost"] . ';dbname=' . $vars["dbname"] . ';charset=utf8', $vars["dbuser"], $vars["dbmdp"]);
     $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    
+
     return $db;
   }
 }

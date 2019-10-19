@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class HTTPRequest extends ApplicationComponent

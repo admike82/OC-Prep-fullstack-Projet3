@@ -10,12 +10,13 @@ use Fram\BackController;
 use FormBuilder\AccountFormBuilder;
 use Model\AccountsManagerPDO;
 
-class UsersController extends BackController {
+class UsersController extends BackController
+{
 
     /** @var AccountsManagerPDO $accountsManager */
     protected $accountsManager;
 
-    public function __construct(Application $app, $module, $action)
+    public function __construct(Application $app, string $module, string $action)
     {
         parent::__construct($app, $module, $action);
         $this->accountsManager = $this->managers->getManagerOf('Accounts');
@@ -29,7 +30,6 @@ class UsersController extends BackController {
      */
     public function executeUpdateUser(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Profil');
         /** @var Account $user */
         $user = $this->app->user()->getAttribute('account');
 
@@ -44,11 +44,11 @@ class UsersController extends BackController {
                 'reponse' => $request->postData('reponse'),
             ]);
             $getAccount = $this->accountsManager->getByUsername($request->postData('username'));
-            if($request->postData('username') != $user->username() && !empty($getAccount)){
+            if ($request->postData('username') != $user->username() && !empty($getAccount)) {
                 $account->setUsername('');
                 $this->app->user()->setFlash([
                     'class' => 'info',
-                    'message' => 'le nom d\'utilisateur '. $request->postData('username') . ' est déjà utilisé'
+                    'message' => 'le nom d\'utilisateur ' . $request->postData('username') . ' est déjà utilisé'
                 ]);
             }
         } else {
@@ -61,7 +61,7 @@ class UsersController extends BackController {
 
         if ($request->method() == 'POST' && $form->isValid()) {
             $password = $request->postData('password');
-            if(password_verify($password, $this->app->user()->getAttribute('account')->password())){
+            if (password_verify($password, $this->app->user()->getAttribute('account')->password())) {
                 $hashed_password = password_hash($request->postData('password'), PASSWORD_DEFAULT);
                 $account->setPassword($hashed_password);
                 $formHandler = new FormHandler($form, $this->accountsManager, $request);
@@ -82,8 +82,8 @@ class UsersController extends BackController {
                 ]);
             }
         }
-
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form->createView())
+            ->addVar('title', 'Profil');
     }
 
     /**
@@ -92,22 +92,22 @@ class UsersController extends BackController {
      * @param HTTPRequest $request
      * @return void
      */
-    public function executeModifyPassword(HTTPRequest $request) {
-        $this->page->addVar('title', 'Changer de mot de passe');
+    public function executeModifyPassword(HTTPRequest $request)
+    {
         /** @var Account $user */
         $user = $this->app->user()->getAttribute('account');
         if ($request->method() == 'POST') {
             $newPassword = $request->postData('newPassword');
             $confirmPassword = $request->postData('confirmPassword');
-            if ($newPassword == $confirmPassword){
-                if (strlen($newPassword) < 8){
+            if ($newPassword == $confirmPassword) {
+                if (strlen($newPassword) < 8) {
                     $this->app->user()->setFlash([
                         'class' => 'danger',
                         'message' => 'Le nouveau mot de passe doit faire minimum 8 caractère !'
                     ]);
                 } else {
                     $account = clone $user;
-                    if (password_verify($request->postData('oldPassword'),$account->password())) {
+                    if (password_verify($request->postData('oldPassword'), $account->password())) {
                         $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
                         $account->setPassword($newPasswordHash);
                         $this->accountsManager->save($account);
@@ -131,7 +131,8 @@ class UsersController extends BackController {
                     'message' => 'La confimation et le nouveau mot de passe différent !'
                 ]);
             }
-        } 
+        }
+        $this->page->addVar('title', 'Changer de mot de passe');
     }
 
     /**
@@ -140,11 +141,11 @@ class UsersController extends BackController {
      * @param HTTPRequest $request
      * @return void
      */
-    public function executeDeleteUser(HTTPRequest $request) {
-        $this->page->addVar('title', 'Suppression du compte');
-        if ($request->method() == 'POST'){
+    public function executeDeleteUser(HTTPRequest $request)
+    {
+        if ($request->method() == 'POST') {
             $user = $this->app->user()->getAttribute('account');
-            if ( password_verify($request->postData('password'), $user->password())){
+            if (password_verify($request->postData('password'), $user->password())) {
                 $this->accountsManager->delete($user->idUser());
                 $this->app->user()->setFlash([
                     'class' => 'info',
@@ -158,5 +159,6 @@ class UsersController extends BackController {
                 ]);
             }
         }
+        $this->page->addVar('title', 'Suppression du compte');
     }
 }

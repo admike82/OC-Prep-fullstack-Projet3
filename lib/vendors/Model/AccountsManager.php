@@ -1,68 +1,69 @@
 <?php
+
 namespace Model;
 
 use \Fram\Manager;
 use \Entity\Account;
 
+/**
+ * @author Michaël GROSS <admike@admike.fr>
+ */
 abstract class AccountsManager extends Manager
 {
-  
+
   /**
    * Méthode permettant d'enregistrer un compte.
-   * @param $account Le compte à enregistrer
+   * @param Account $account Le compte à enregistrer
    * @return void
    */
   public function save(Account $account)
   {
-    if ($account->isValid())
-    {
+    if ($account->isValid()) {
       $account->isNew() ? $this->add($account) : $this->modify($account);
-    }
-    else
-    {
+    } else {
       throw new \RuntimeException('Le compte doit être validé pour être enregistré');
     }
   }
 
   /**
    * Méthode permettant d'ajouter un compte utilisateur.
-   * @param $account Account Le compte à ajouter
+   * @param Account $account Le compte à ajouter
    * @return void
    */
   abstract protected function add(Account $account);
 
   /**
    * Méthode permettant de supprimer un compte.
-   * @param $id int L'identifiant du compte à supprimer
+   * @param int $id L'identifiant du compte à supprimer
    * @return void
    */
   abstract public function delete(int $id);
 
   /**
    * Méthode permettant de modifier un compte.
-   * @param $account Account Le compte à modifier
+   * @param Account $account Le compte à modifier
    * @return void
    */
   abstract protected function modify(Account $account);
-  
+
   /**
    * Méthode permettant d'obtenir un compte spécifique.
-   * @param $id int L'identifiant du compte
+   * @param int $id L'identifiant du compte
    * @return Account
    */
   abstract public function get(int $id);
 
   /**
    * Méthode permettant d'obtenir un compte spécifique.
-   * @param $username string Le nom d'utilisateur du compte
+   * @param string $username Le nom d'utilisateur du compte
    * @return Account
    */
   abstract public function getByUsername(string $username);
 
   /**
    * Méthode retournant une liste de compte demandée.
-   * @param $debut int La première compte à sélectionner
-   * @param $limite int Le nombre de compte à sélectionner
+   * @param int $debut La première compte à sélectionner
+   * @param int $limite Le nombre de compte à sélectionner
    * @return Account[] La liste des compte. Chaque entrée est une instance de Account.
    */
   abstract public function getList($debut = -1, $limite = -1);

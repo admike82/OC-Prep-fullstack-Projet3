@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class MinLengthValidator extends Validator
@@ -24,7 +25,13 @@ class MinLengthValidator extends Validator
     }
 
     // SETTER //
-    
+
+    /**
+     * Rensigne la longueur minimum
+     *
+     * @param int $minLength
+     * @return void
+     */
     public function setMinLength(int $minLength)
     {
         if ($minLength > 0) {

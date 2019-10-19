@@ -19,7 +19,7 @@ class ConnexionController extends BackController
     /** @var AccountsManagerPDO $accountsManager */
     protected $accountsManager;
 
-    public function __construct(Application $app, $module, $action)
+    public function __construct(Application $app, string $module, string $action)
     {
         parent::__construct($app, $module, $action);
         $this->accountsManager = $this->managers->getManagerOf('Accounts');
@@ -33,7 +33,6 @@ class ConnexionController extends BackController
      */
     public function executeIndex(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Connexion');
         if ($request->postExists('username')) {
             $username = $request->postData('username');
             $password = $request->postData('password');
@@ -57,6 +56,7 @@ class ConnexionController extends BackController
                 ]);
             }
         }
+        $this->page->addVar('title', 'Connexion');
     }
 
     /**
@@ -67,15 +67,12 @@ class ConnexionController extends BackController
      */
     public function executeForget(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Mot de passe oublié');
         if ($request->postExists('username')) {
             $username = $request->postData('username');
             $question = $request->postData('question');
             $reponse = $request->postData('reponse');
-
             // On récupère les données de l'utilisateur
             $account = $this->accountsManager->getByUsername($username);
-
             if (empty($account)) {
                 $this->app->user()->setFlash([
                     'class' => 'danger',
@@ -117,8 +114,8 @@ class ConnexionController extends BackController
         foreach ($fields as $field) {
             $form .= $field->buildWidget() . '<br />';
         }
-
-        $this->page->addVar('form', $form);
+        $this->page->addVar('form', $form)
+            ->addVar('title', 'Mot de passe oublié');
     }
 
     /**
@@ -129,7 +126,7 @@ class ConnexionController extends BackController
      */
     public function executeNewPassword(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Nouveau mot de passe');
+        /** @var Account $account */
         $account = $this->app->user()->getAttribute('account');
         if (!isset($account)) {
             $this->app->httpResponse()->redirect('.');
@@ -169,7 +166,8 @@ class ConnexionController extends BackController
             $form .= $field->buildWidget() . '<br />';
         }
 
-        $this->page->addVar('form', $form);
+        $this->page->addVar('form', $form)
+            ->addVar('title', 'Nouveau mot de passe');
     }
 
     /**
@@ -180,8 +178,6 @@ class ConnexionController extends BackController
      */
     public function executeRegister(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Créer un compte');
-
         if ($request->method() == 'POST') {
             $account = new Account([
                 'nom' => $request->postData('nom'),
@@ -206,7 +202,6 @@ class ConnexionController extends BackController
 
         $formBuilder = new AccountFormBuilder($account);
         $formBuilder->build();
-
         $form = $formBuilder->form();
 
         if ($request->method() == 'POST' && $form->isValid()) {
@@ -222,7 +217,7 @@ class ConnexionController extends BackController
                 $this->app->httpResponse()->redirect('/');
             }
         }
-
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form->createView())
+            ->addVar('title', 'Créer un compte');
     }
 }

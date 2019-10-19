@@ -2,6 +2,11 @@
 
 namespace Fram;
 
+/**
+ * Classe permettent d'initialiser le controller
+ * 
+ * @author Michaël GROSS <admike@admike.fr>
+ */
 abstract class BackController extends ApplicationComponent
 {
   protected $action = '';
@@ -10,7 +15,14 @@ abstract class BackController extends ApplicationComponent
   protected $view = '';
   protected $managers = null;
 
-  public function __construct(Application $app, $module, $action)
+  /**
+   * Undocumented function
+   *
+   * @param Application $app
+   * @param string $module
+   * @param string $action
+   */
+  public function __construct(Application $app, string $module, string $action)
   {
     parent::__construct($app);
 
@@ -51,6 +63,12 @@ abstract class BackController extends ApplicationComponent
 
   // SETTERS //
 
+  /**
+   * renseigne le module
+   *
+   * @param string $module
+   * @return void
+   */
   public function setModule($module)
   {
     if (!is_string($module) || empty($module)) {
@@ -60,6 +78,12 @@ abstract class BackController extends ApplicationComponent
     $this->module = $module;
   }
 
+  /**
+   * renseigne l'action
+   *
+   * @param string $action
+   * @return void
+   */
   public function setAction($action)
   {
     if (!is_string($action) || empty($action)) {
@@ -69,6 +93,12 @@ abstract class BackController extends ApplicationComponent
     $this->action = $action;
   }
 
+  /**
+   * renseigne la vue
+   *
+   * @param string $view
+   * @return void
+   */
   public function setView($view)
   {
     if (!is_string($view) || empty($view)) {

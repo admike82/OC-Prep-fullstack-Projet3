@@ -1,11 +1,17 @@
 <?php
+
 namespace Model;
 
 use \Entity\Vote;
 
-class VotesManagerPDO extends VotesManager {
+/**
+ * Classe permettant de faire le lien entre la BDD et l'entité Vote
+ * @author Michaël GROSS <admike@admike.fr>
+ */
+class VotesManagerPDO extends VotesManager
+{
 
-    protected function add(Vote $vote) 
+    protected function add(Vote $vote)
     {
         $q = $this->dao->prepare('INSERT INTO vote SET id_user = :idUser, id_acteur = :idActeur, vote = :vote');
 
@@ -27,11 +33,13 @@ class VotesManagerPDO extends VotesManager {
         $q->execute();
     }
 
-    public function delete(int $idUser, int $idActeur) {
-        $this->dao->exec('DELETE FROM vote WHERE id_user = '.$idUser.' AND id_acteur = '.$idActeur);
+    public function delete(int $idUser, int $idActeur)
+    {
+        $this->dao->exec('DELETE FROM vote WHERE id_user = ' . $idUser . ' AND id_acteur = ' . $idActeur);
     }
 
-    public function get(int $idUser, int $idActeur) {
+    public function get(int $idUser, int $idActeur)
+    {
         $q = $this->dao->prepare('SELECT id_user as idUser, id_acteur as idActeur, vote FROM vote WHERE id_user = :idUser AND id_acteur = :idActeur');
         $q->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
         $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
@@ -42,7 +50,8 @@ class VotesManagerPDO extends VotesManager {
         return $q->fetch();
     }
 
-    public function getVote(int $idUser, int $idActeur){
+    public function getVote(int $idUser, int $idActeur)
+    {
         $q = $this->dao->prepare('SELECT vote FROM vote WHERE id_user = :idUser AND id_acteur = :idActeur');
         $q->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
         $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
@@ -51,7 +60,8 @@ class VotesManagerPDO extends VotesManager {
         return $q->fetch();
     }
 
-    public function getListOf(int $idActeur) {
+    public function getListOf(int $idActeur)
+    {
 
         $q = $this->dao->prepare('SELECT id_user as idUser, id_acteur as idActeur, vote FROM vote WHERE id_acteur = :idActeur');
         $q->bindValue(':idActeur', $idActeur, \PDO::PARAM_INT);
@@ -62,11 +72,13 @@ class VotesManagerPDO extends VotesManager {
         return $q->fetchAll();
     }
 
-    public function countLike(int $idActeur) {
-        return $this->dao->query('SELECT COUNT(*) FROM vote WHERE id_acteur = '.$idActeur.' AND vote = true')->fetchColumn();
+    public function countLike(int $idActeur)
+    {
+        return $this->dao->query('SELECT COUNT(*) FROM vote WHERE id_acteur = ' . $idActeur . ' AND vote = true')->fetchColumn();
     }
 
-    public function countDislike(int $idActeur){
+    public function countDislike(int $idActeur)
+    {
         return $this->dao->query('SELECT COUNT(*) FROM vote WHERE id_acteur = ' . $idActeur . ' AND vote = false')->fetchColumn();
     }
 }

@@ -48,13 +48,25 @@ class User
   }
 
   // GETTERS //
-  
+
+  /**
+   * retourne les variables de session
+   *
+   * @param mixed $attr
+   * @return void
+   */
   public function getAttribute($attr)
   {
     return isset($_SESSION[$attr]) ? $_SESSION[$attr] : null;
   }
 
-  public function getFlash(){
+  /**
+   * Retourn le message flash
+   *
+   * @return string
+   */
+  public function getFlash()
+  {
     $flash = $_SESSION['flash'];
     unset($_SESSION['flash']);
 
@@ -63,11 +75,23 @@ class User
 
   // SETTERS //
 
+  /**
+   * renseigne les variables de session
+   *
+   * @param mixed $attr
+   * @param mixed $value
+   * @return void
+   */
   public function setAttribute($attr, $value)
   {
     $_SESSION[$attr] = $value;
   }
 
+  /**
+   * rensigne l'authentification
+   * @param boolean $authenticated
+   * @return void
+   */
   public function setAuthenticated($authenticated = true)
   {
     if (!is_bool($authenticated)) {
@@ -77,6 +101,12 @@ class User
     $_SESSION['auth'] = $authenticated;
   }
 
+  /**
+   * Renseigne le message flash
+   *
+   * @param string|array $value
+   * @return void
+   */
   public function setFlash($value)
   {
     $_SESSION['flash'] = $value;

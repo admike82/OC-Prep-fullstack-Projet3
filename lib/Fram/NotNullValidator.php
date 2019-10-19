@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class NotNullValidator extends Validator
@@ -9,7 +10,8 @@ class NotNullValidator extends Validator
    * @param mixed $value
    * @return boolean
    */
-  public function isValid($value) :bool {
+  public function isValid($value): bool
+  {
     return $value != '';
   }
 }

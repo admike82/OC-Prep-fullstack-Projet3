@@ -1,11 +1,13 @@
 <?php
+
 namespace Fram;
 
 abstract class FormBuilder
 {
     protected $form;
 
-    public function __construct(Entity $entity) {
+    public function __construct(Entity $entity)
+    {
         $this->setForm(new Form($entity));
     }
 
@@ -18,12 +20,26 @@ abstract class FormBuilder
 
     // SETTER //
 
-    public function setForm(Form $form) {
+    /**
+     * Renseigne le formulaire
+     *
+     * @param Form $form
+     * @return void
+     */
+    public function setForm(Form $form)
+    {
         $this->form = $form;
     }
 
     // GETTER //
-    public function form() :Form {
+
+    /**
+     * Retourn le formulaire
+     *
+     * @return Form
+     */
+    public function form(): Form
+    {
         return $this->form;
     }
 }

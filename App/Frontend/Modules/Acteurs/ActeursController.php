@@ -25,7 +25,7 @@ class ActeursController extends BackController
     /** @var VotesManagerPDO $votesManager */
     protected $votesManager;
 
-    public function __construct(Application $app, $module, $action)
+    public function __construct(Application $app, string $module, string $action)
     {
         parent::__construct($app, $module, $action);
         $this->accountsManager = $this->managers->getManagerOf('Accounts');
@@ -41,7 +41,6 @@ class ActeursController extends BackController
     public function executeIndex()
     {
         $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
-        $this->page->addVar('title', 'Listes des acteurs');
         $listeActeurs = $this->acteursManager->getList();
         foreach ($listeActeurs as $acteur) {
             if (strlen($acteur->description()) > $nombreCaracteres) {
@@ -50,7 +49,8 @@ class ActeursController extends BackController
                 $acteur->setDescription($debut);
             }
         }
-        $this->page->addVar('listeActeurs', $listeActeurs);
+        $this->page->addVar('listeActeurs', $listeActeurs)
+            ->addVar('title', 'Listes des acteurs');
     }
 
     /**
@@ -96,7 +96,6 @@ class ActeursController extends BackController
     public function executeAddComment(HTTPRequest $request)
     {
         $acteur = $this->acteursManager->getUnique($request->getData('id'));
-        $this->page->addVar('title', 'Ajouter un commentaire sur ' . $acteur->acteur());
 
         if ($request->method() == 'POST') {
             $post = new Post([
@@ -124,8 +123,9 @@ class ActeursController extends BackController
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }
 
-        $this->page->addVar('acteur', $acteur);
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('acteur', $acteur)
+            ->addVar('form', $form->createView())
+            ->addVar('title', 'Ajouter un commentaire sur ' . $acteur->acteur());
     }
 
     /**
@@ -151,8 +151,6 @@ class ActeursController extends BackController
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }
 
-        $this->page->addVar('title', 'Modifier un commentaire sur ' . $acteur->acteur());
-
         if ($request->method() == 'POST') {
             $post->setPost($request->postData('post'));
         }
@@ -173,8 +171,9 @@ class ActeursController extends BackController
             $this->app->httpResponse()->redirect('/acteur-' . $acteur->idActeur() . '.html');
         }
 
-        $this->page->addVar('acteur', $acteur);
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('acteur', $acteur)
+            ->addVar('form', $form->createView())
+            ->addVar('title', 'Modifier un commentaire sur ' . $acteur->acteur());
     }
 
     /**

@@ -4,6 +4,10 @@ namespace Model;
 
 use \Entity\Acteur;
 
+/**
+ * Classe permettant de faire le lien entre la BDD et l'entité Acteur
+ * @author Michaël GROSS <admike@admike.fr>
+ */
 class ActeursManagerPDO extends ActeursManager
 {
 
@@ -17,7 +21,7 @@ class ActeursManagerPDO extends ActeursManager
 
         $requete->execute();
 
-        $acteur->setIdActeur($this->dao->lastInsertId());
+        $acteur->setIdActeur((int) $this->dao->lastInsertId());
     }
 
     public function count()

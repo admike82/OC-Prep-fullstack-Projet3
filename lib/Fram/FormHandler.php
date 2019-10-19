@@ -8,7 +8,8 @@ class FormHandler
     protected $manager;
     protected $request;
 
-    public function __construct(Form $form, Manager $manager, HTTPRequest $request) {
+    public function __construct(Form $form, Manager $manager, HTTPRequest $request)
+    {
         $this->setForm($form);
         $this->setManager($manager);
         $this->setRequest($request);
@@ -19,7 +20,8 @@ class FormHandler
      *
      * @return boolean
      */
-    public function process() :bool {
+    public function process(): bool
+    {
         if ($this->request->method() == 'POST' && $this->form->isValid()) {
             $this->manager->save($this->form->entity());
             return true;
@@ -28,16 +30,37 @@ class FormHandler
     }
 
     // SETTER //
-    
-    public function setForm(Form $form) {
+
+    /**
+     * Renseigne le formulaire
+     *
+     * @param Form $form
+     * @return void
+     */
+    public function setForm(Form $form)
+    {
         $this->form = $form;
     }
 
-    public function setManager(Manager $manager) {
+    /**
+     * Renseigne le manager
+     *
+     * @param Manager $manager
+     * @return void
+     */
+    public function setManager(Manager $manager)
+    {
         $this->manager = $manager;
     }
 
-    public function setRequest(HTTPRequest $request) {
+    /**
+     * Renseigne la requete
+     *
+     * @param HTTPRequest $request
+     * @return void
+     */
+    public function setRequest(HTTPRequest $request)
+    {
         $this->request = $request;
     }
 }

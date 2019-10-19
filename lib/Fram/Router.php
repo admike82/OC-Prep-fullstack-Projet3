@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class Router
@@ -16,34 +17,34 @@ class Router
    */
   public function addRoute(Route $route)
   {
-    if (!in_array($route, $this->routes))
-    {
+    if (!in_array($route, $this->routes)) {
       $this->routes[] = $route;
     }
   }
 
   // GETTER //
-  
+
+  /**
+   * Retourne la route
+   *
+   * @param string $url
+   * @return Route
+   */
   public function getRoute($url): Route
   {
-    foreach ($this->routes as $route)
-    {
+    foreach ($this->routes as $route) {
       // Si la route correspond à l'URL
-      if (($varsValues = $route->match($url)) !== false)
-      {
+      if (($varsValues = $route->match($url)) !== false) {
         // Si elle a des variables
-        if ($route->hasVars())
-        {
+        if ($route->hasVars()) {
           $varsNames = $route->varsNames();
           $listVars = [];
 
           // On crée un nouveau tableau clé/valeur
           // (clé = nom de la variable, valeur = sa valeur)
-          foreach ($varsValues as $key => $match)
-          {
+          foreach ($varsValues as $key => $match) {
             // La première valeur contient entièrement la chaine capturée (voir la doc sur preg_match)
-            if ($key !== 0)
-            {
+            if ($key !== 0) {
               $listVars[$varsNames[$key - 1]] = $match;
             }
           }

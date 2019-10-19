@@ -1,6 +1,11 @@
 <?php
+
 namespace Fram;
 
+/**
+ * Classe représentant les managers des Entity/BDD
+ * @author Michël GROSS <admike@admikefr>
+ */
 class Managers
 {
   protected $api = null;
@@ -21,14 +26,12 @@ class Managers
    */
   public function getManagerOf($module)
   {
-    if (!is_string($module) || empty($module))
-    {
+    if (!is_string($module) || empty($module)) {
       throw new \InvalidArgumentException('Le module spécifié est invalide');
     }
 
-    if (!isset($this->managers[$module]))
-    {
-      $manager = '\\Model\\'.$module.'Manager'.$this->api;
+    if (!isset($this->managers[$module])) {
+      $manager = '\\Model\\' . $module . 'Manager' . $this->api;
 
       $this->managers[$module] = new $manager($this->dao);
     }

@@ -1,7 +1,9 @@
 <?php
+
 namespace Fram;
 
-class PasswordField extends Field {
+class PasswordField extends Field
+{
     protected $maxLength;
     protected $minlength;
 
@@ -10,12 +12,13 @@ class PasswordField extends Field {
      *
      * @return string
      */
-    public function buildWidget() :string {
+    public function buildWidget(): string
+    {
         $widget = '';
         if (!empty($this->errorMessage)) {
             $widget .= '<div class="form-error">' . $this->errorMessage . '</div>';
         }
-        $widget .= '<label>' . $this->label . ' <br />('.$this->minlength.' caractères minimum )</label><input type="password" class="form-control" name="' . $this->name . '"';
+        $widget .= '<label>' . $this->label . ' <br />(' . $this->minlength . ' caractères minimum )</label><input type="password" class="form-control" name="' . $this->name . '"';
         if (!empty($this->minLength)) {
             $widget .= ' minLength="' . $this->minLength . '"';
         }
@@ -26,7 +29,13 @@ class PasswordField extends Field {
     }
 
     // SETTER //
-    
+
+    /**
+     * Renseigne la longueur minimum
+     *
+     * @param int $minlength
+     * @return void
+     */
     public function setMinLength(int $minlength)
     {
         if ($minlength > 0) {
@@ -36,7 +45,14 @@ class PasswordField extends Field {
         }
     }
 
-    public function setMaxLength(int $maxLength) {
+    /**
+     * Renseigne la longueur maximum
+     *
+     * @param int $maxLength
+     * @return void
+     */
+    public function setMaxLength(int $maxLength)
+    {
         if ($maxLength > 0) {
             $this->maxLength = $maxLength;
         } else {

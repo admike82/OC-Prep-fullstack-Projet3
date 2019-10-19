@@ -1,14 +1,17 @@
 <?php
+
 namespace Fram;
 
-class Questions {
+class Questions
+{
 
     /**
      * Création du tableau de questions
      *
      * @return array
      */
-    public function questions() :array {
+    public function questions(): array
+    {
         $question = [
             'Quelle est le nom de jeune fille de votre mère ?',
             'Comment s\'appelait votre premier animal de compagnie ?',

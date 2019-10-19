@@ -31,7 +31,6 @@ class InformationsController extends BackController
      */
     public function executeContact(HTTPRequest $request)
     {
-        $this->page->addVar('title', 'Nous contacter');
         $nom = '';
         $prenom = '';
         $mail = '';
@@ -127,6 +126,7 @@ class InformationsController extends BackController
             $form .= $field->buildWidget() . '<br />';
         }
 
-        $this->page->addVar('form', $form);
+        $this->page->addVar('form', $form)
+            ->addVar('title', 'Nous contacter');
     }
 }

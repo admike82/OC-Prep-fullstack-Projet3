@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class TextField extends Field
@@ -11,7 +12,8 @@ class TextField extends Field
      *
      * @return string
      */
-    public function buildWidget() :string {
+    public function buildWidget(): string
+    {
         $widget = '';
         if (!empty($this->errorMessage)) {
             $widget .= '<div class="form-error">' . $this->errorMessage . '</div>';
@@ -32,13 +34,27 @@ class TextField extends Field
 
     // SETTERS //
 
-    public function setCols(int $cols) {
+    /**
+     * Renseigne le nombre de colonnes
+     *
+     * @param int $cols
+     * @return void
+     */
+    public function setCols(int $cols)
+    {
         if ($cols > 0) {
             $this->cols = $cols;
         }
     }
 
-    public function setRows(int $rows) {
+    /**
+     * Renseigne le nombre de lignes
+     *
+     * @param int $rows
+     * @return void
+     */
+    public function setRows(int $rows)
+    {
         if ($rows > 0) {
             $this->rows = $rows;
         }

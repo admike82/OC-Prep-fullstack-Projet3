@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 abstract class Validator
@@ -12,14 +13,18 @@ abstract class Validator
 
     /**
      * Contrôle de la validité des champs
-     *
-     * @param [type] $value
+     * @param mixed $value
      * @return boolean
      */
-    abstract public function isValid($value) :bool;
+    abstract public function isValid($value): bool;
 
     // SETTER //
 
+    /**
+     * Renseigne le message d'erreur
+     * @param string $errorMessage
+     * @return void
+     */
     public function setErrorMessage(string $errorMessage)
     {
         if (is_string($errorMessage)) {
@@ -28,8 +33,12 @@ abstract class Validator
     }
 
     // GETTER //
-    
-    public function errorMessage() :string
+
+    /**
+     * retroune le message d'erreur
+     * @return string
+     */
+    public function errorMessage(): string
     {
         return $this->errorMessage;
     }

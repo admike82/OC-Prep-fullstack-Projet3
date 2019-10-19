@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 class Form
@@ -6,7 +7,8 @@ class Form
     protected $entity;
     protected $fields = [];
 
-    public function __construct(Entity $entity) {
+    public function __construct(Entity $entity)
+    {
         $this->setEntity($entity);
     }
 
@@ -16,9 +18,10 @@ class Form
      * @param Field $field
      * @return Form
      */
-    public function add(Field $field) {
+    public function add(Field $field)
+    {
         $attr = $field->name(); // On récupère le nom du champ.
-        $field->setValue($this->entity->$attr()); // On assigne la valeur correspondante au champ.
+        $field->setValue( $this->entity->$attr() ? $this->entity->$attr() : '' ); // On assigne la valeur correspondante au champ.
         $this->fields[] = $field; // On ajoute le champ passé en argument à la liste des champs.
         return $this;
     }
@@ -28,7 +31,8 @@ class Form
      *
      * @return string
      */
-    public function createView() :string {
+    public function createView(): string
+    {
         $view = '';
         // On génère un par un les champs du formulaire.
         foreach ($this->fields as $field) {
@@ -42,7 +46,8 @@ class Form
      *
      * @return boolean
      */
-    public function isValid() :bool {
+    public function isValid(): bool
+    {
         $valid = true;
         // On vérifie que tous les champs sont valides.
         foreach ($this->fields as $field) {
@@ -55,13 +60,26 @@ class Form
 
     // GETTER //
 
-    public function entity() :Entity {
+    /**
+     * Retourne l'entité
+     *
+     * @return Entity
+     */
+    public function entity(): Entity
+    {
         return $this->entity;
     }
 
     // SETTER //
-    
-    public function setEntity(Entity $entity) {
+
+    /**
+     * Renseigne l'entité
+     *
+     * @param Entity $entity
+     * @return void
+     */
+    public function setEntity(Entity $entity)
+    {
         $this->entity = $entity;
     }
 }

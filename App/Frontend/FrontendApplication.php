@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Frontend;
 
 use Fram\Application;
 
-class FrontendApplication extends Application {
+class FrontendApplication extends Application
+{
 
     public function __construct()
     {
@@ -22,7 +24,7 @@ class FrontendApplication extends Application {
         if (!$this->user->isAuthenticated()) {
             $this->httpResponse->redirect('/connexion/');
         }
-        
+
         $controller = $this->getController();
         $controller->execute();
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Fram;
 
 abstract class Entity implements \ArrayAccess
@@ -9,8 +10,7 @@ abstract class Entity implements \ArrayAccess
 
   public function __construct(array $donnees = [])
   {
-    if (!empty($donnees))
-    {
+    if (!empty($donnees)) {
       $this->hydrate($donnees);
     }
   }
@@ -29,8 +29,7 @@ abstract class Entity implements \ArrayAccess
    */
   public function offsetGet($var)
   {
-    if (isset($this->$var) && is_callable([$this, $var]))
-    {
+    if (isset($this->$var) && is_callable([$this, $var])) {
       return $this->$var();
     }
   }
@@ -44,10 +43,9 @@ abstract class Entity implements \ArrayAccess
    */
   public function offsetSet($var, $value)
   {
-    $method = 'set'.ucfirst($var);
+    $method = 'set' . ucfirst($var);
 
-    if (isset($this->$var) && is_callable([$this, $method]))
-    {
+    if (isset($this->$var) && is_callable([$this, $method])) {
       $this->$method($value);
     }
   }
