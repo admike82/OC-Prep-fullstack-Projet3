@@ -184,7 +184,7 @@ class ConnexionController extends BackController
                 'prenom' => $request->postData('prenom'),
                 'username' => $request->postData('username'),
                 'password' => $request->postData('password'),
-                'question' => $request->postData('question'),
+                'question' => $request->postData('question')!==NULL ? $request->postData('question') : "",
                 'reponse' => $request->postData('reponse'),
             ]);
             $getAccount = $this->accountsManager->getByUsername($request->postData('username'));

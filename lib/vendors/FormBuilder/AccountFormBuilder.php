@@ -2,6 +2,7 @@
 
 namespace FormBuilder;
 
+use Entity\Account;
 use Fram\Questions;
 use Fram\FormBuilder;
 use Fram\SelectField;
@@ -27,6 +28,9 @@ class AccountFormBuilder extends FormBuilder
      */
     public function build()
     {
+        /** @var Account $entity */
+        $entity = $this->form->entity();
+
         $questions = new Questions;
         $this->form->add(new StringField([
             'label' => 'Nom',
@@ -71,7 +75,7 @@ class AccountFormBuilder extends FormBuilder
                 'label' => 'Question secrète',
                 'name' => 'question',
                 'selectOptions' => $questions->questions(),
-                'selected' => $this->form->entity()->question(),
+                'selected' => $entity->question(),
                 'validators' => [
                     new NotNullValidator('Merci de selectionner votre question secrète'),
                 ],
